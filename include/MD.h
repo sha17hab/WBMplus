@@ -206,6 +206,7 @@ extern "C" {
 #define MDVarTransferEffSep					 "TransferEffSep"	//RJS 061511
 
 #define MDVarThermalWdl						 "ThermalWdl"		//RJS 081711
+#define MDVarPowerPlantCap					 "PowerPlantCapacity"   //AM  011312
 
 #define MDVarLakeArea                        "LakeArea" // TODO I think this is Wil's addition but not used yet
 #define MDVarReservoirArea                   "ReservoirArea" // TODO I think this is Wil's addition but not used yet
@@ -461,6 +462,7 @@ int MDPrecipitationDef();
 int MDWetDaysDef();
 int MDWetlandAreaDef();
 int MDPermafrostDef();
+int MDThermalPowerPlantDef ();
 int MDWTempGrdWaterDef();
 int MDWTempRiverDef();
 int MDWTempRiverRouteDef();

@@ -80,22 +80,23 @@ static void _MDThermalInputs (int itemID) {
 }
 
 
-enum { MDnone, MDinput };
+enum { MDnone, MDinput, MDcalculate };
 
 int MDThermalInputsDef () {
 	int optID = MFUnset;
 	const char *optStr, *optName = MDOptThermalInputs;
-	const char *options [] = { MDNoneStr, MDInputStr, (char *) NULL };
+	const char *options [] = { MDNoneStr, MDInputStr, MDCalculateStr, (char *) NULL };
 
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options, optStr, true);
 
 	MFDefEntering ("Thermal Inputs");
 	switch (optID) {
 		case MDinput:
+		case MDcalculate:
 			if (((_MDInDischargeID      = MDDischLevel2Def ()) == CMfailed) ||
-			    ((_MDInThermalWdlID     = MFVarGetID (MDVarThermalWdl,            "m3", MFInput, MFState, MFBoundary)) == CMfailed) ||
-			    ((_MDOutWdl_QxTID	    = MFVarGetID (MDVarWithdrawal_QxT,	      "m3*degC/d", MFOutput, MFFlux, MFBoundary)) == CMfailed) ||
+			    ((_MDInThermalWdlID     = MDThermalPowerPlantDef ()) == CMfailed) ||
 			    ((_MDInWarmingTempID    = MFVarGetID (MDVarWarmingTemp,            "degC", MFInput, MFState, MFBoundary)) == CMfailed)	||
+			    ((_MDOutWdl_QxTID	    = MFVarGetID (MDVarWithdrawal_QxT,	      "m3*degC/d", MFOutput, MFFlux, MFBoundary)) == CMfailed) ||
 
 			    (MFModelAddFunction (_MDThermalInputs) == CMfailed)) return (CMfailed);
 			break;
