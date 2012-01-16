@@ -68,6 +68,7 @@
 /obj/MDSurfRunoff.o
 /obj/MDThermalInputs.o
 /obj/MDWTempGrdWater.o
+obj/MDThermalPowerPlant.o
 /obj/MDWTempRiver.o
 /obj/MDWTempRiverRoute.o
 /obj/MDWTempSurfRunoff.o
