@@ -168,7 +168,7 @@ int MDFecalRoutingDef () {
 
 	if (_MDFlux_FecalID != MFUnset)	return (_MDFlux_FecalID);
 
-	MFDefEntering ("Fecal Coliform Calculation");
+	MFDefEntering ("Fecal Coliform Calculation",__FILE__);
 	if (((optStr = MFOptionGet (MDParFecalK))  != (char *) NULL) && (sscanf (optStr,"%f",&par) == 1)) _MDFecalK = par;
 		
    // Input
@@ -201,6 +201,6 @@ int MDFecalRoutingDef () {
 		    ((_MDInResStorageID        = MFVarGetID (MDVarReservoirStorage,       "km3",     MFInput, MFState, MFInitial))   == CMfailed))
 	    	return (CMfailed);
 	}
-	MFDefLeaving ("Fecal Coliform Calculation");
+	MFDefLeaving ("Fecal Coliform Calculation",__FILE__);
 	return (_MDConc_FecalID); 
 }

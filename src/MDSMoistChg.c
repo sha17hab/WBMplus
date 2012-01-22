@@ -48,7 +48,7 @@ int MDSoilMoistChgDef () {
 	int ret;
 	if (_MDOutSoilMoistChgID != MFUnset) return (_MDOutSoilMoistChgID);
 
-	MFDefEntering ("Soil Moisture");
+	MFDefEntering ("Soil Moisture",__FILE__);
 
 	if (((ret = MDIrrGrossDemandDef ()) != MFUnset) &&
 	    ((ret == CMfailed) ||
@@ -62,6 +62,6 @@ int MDSoilMoistChgDef () {
         ((_MDOutSoilMoistChgID     = MFVarGetID (MDVarSoilMoistChange,     "mm",   MFOutput, MFState, MFBoundary)) == CMfailed) ||
         ((_MDOutRelSoilMoistID     = MFVarGetID (MDVarRelSoilMoisture,     "mm",   MFOutput, MFState, MFInitial)) == CMfailed) ||
        (MFModelAddFunction (_MDSoilMoistChg) == CMfailed)) return (CMfailed);
-	MFDefLeaving ("Soil Moisture");
+	MFDefLeaving ("Soil Moisture",__FILE__);
 	return (_MDOutSoilMoistChgID);
 }

@@ -83,7 +83,7 @@ int MDGrossRadDef () {
 
 	if (_MDOutGrossRadID != MFUnset) return (_MDOutGrossRadID);
 
-	MFDefEntering ("Gross Radiance");
+	MFDefEntering ("Gross Radiance",__FILE__);
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options, optStr, true);
 
 	switch (optID) {
@@ -100,6 +100,6 @@ int MDGrossRadDef () {
 			break;
 		default:  MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Gross Radiance");
+	MFDefLeaving ("Gross Radiance",__FILE__);
 	return (_MDOutGrossRadID);
 }

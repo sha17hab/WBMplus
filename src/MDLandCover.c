@@ -104,7 +104,7 @@ int MDLandCoverDef () {
 
 	if (_MDOutCoverID != MFUnset) return (_MDOutCoverID);
 
-	MFDefEntering ("Landcover");
+	MFDefEntering ("Landcover",__FILE__);
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
 	switch (optID) {
 		case MDinput: _MDOutCoverID = MFVarGetID (MDVarWBMCover,     MFNoUnit, MFInput, MFState, MFBoundary); break;
@@ -120,6 +120,6 @@ int MDLandCoverDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Landcover");
+	MFDefLeaving ("Landcover",__FILE__);
 	return (_MDOutCoverID);
 }

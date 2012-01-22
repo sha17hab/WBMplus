@@ -40,7 +40,7 @@ int MDDischMeanDef () {
 	const char *options [] = { MDInputStr, MDCalculateStr, (char *) NULL };
 
 	if (_MDOutDischMeanID != MFUnset) return (_MDOutDischMeanID);
-	MFDefEntering ("Discharge Mean");
+	MFDefEntering ("Discharge Mean",__FILE__);
 
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options, optStr, true);
 
@@ -54,6 +54,6 @@ int MDDischMeanDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Discharge Mean");
+	MFDefLeaving ("Discharge Mean",__FILE__);
 	return (_MDOutDischMeanID);
 }

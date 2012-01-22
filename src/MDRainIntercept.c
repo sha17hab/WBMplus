@@ -71,7 +71,7 @@ int MDRainInterceptDef () {
 
 	if ((optID == MDnone) || (_MDOutInterceptID != MFUnset)) return (_MDOutInterceptID);
 
-	MFDefEntering ("Rainfed Intercept");
+	MFDefEntering ("Rainfed Intercept",__FILE__);
 
 	switch (optID) {
 		case MDinput: _MDOutInterceptID = MFVarGetID (MDVarRainInterception,  "mm", MFInput, MFFlux, false); break;
@@ -87,6 +87,6 @@ int MDRainInterceptDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Rainfed Intercept");
+	MFDefLeaving ("Rainfed Intercept",__FILE__);
 	return (_MDOutInterceptID); 
 }

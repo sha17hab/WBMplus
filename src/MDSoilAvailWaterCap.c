@@ -46,7 +46,7 @@ int MDSoilAvailWaterCapDef () {
 	
 	if (_MDOutSoilAvailWaterCapID != MFUnset) return (_MDOutSoilAvailWaterCapID);
 
-	MFDefEntering ("Soil available water capacity");
+	MFDefEntering ("Soil available water capacity",__FILE__);
 
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options, optStr, true);
 		switch (optID) {
@@ -60,6 +60,6 @@ int MDSoilAvailWaterCapDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 		}
-	MFDefLeaving  ("Soil available water capacity");
+	MFDefLeaving  ("Soil available water capacity",__FILE__);
 	return (_MDOutSoilAvailWaterCapID);
 }

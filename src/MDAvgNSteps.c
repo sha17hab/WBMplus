@@ -28,9 +28,9 @@ static void _MDAvgNSteps (int itemID) {
 int MDAvgNStepsDef () {
 
 	if (_MDOutAvgNStepsID != MFUnset) return (_MDOutAvgNStepsID);
-	MFDefEntering ("Average NSteps");
+	MFDefEntering ("Average NSteps",__FILE__);
 	if (((_MDOutAvgNStepsID = MFVarGetID (MDVarAvgNSteps, MFNoUnit, MFInt,    MFState,  MFInitial)) == CMfailed) ||
 	    (MFModelAddFunction(_MDAvgNSteps) == CMfailed)) return (CMfailed);
-	MFDefLeaving ("Average NSteps");
+	MFDefLeaving ("Average NSteps",__FILE__);
 	return (_MDOutAvgNStepsID);
 }

@@ -89,7 +89,7 @@ int MDThermalInputsDef () {
 
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options, optStr, true);
 
-	MFDefEntering ("Thermal Inputs");
+	MFDefEntering ("Thermal Inputs",__FILE__);
 	switch (optID) {
 		case MDinput:
 		case MDcalculate:
@@ -102,7 +102,7 @@ int MDThermalInputsDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Thermal Inputs");
+	MFDefLeaving ("Thermal Inputs",__FILE__);
 	return (_MDOutWdl_QxTID);
 }
 

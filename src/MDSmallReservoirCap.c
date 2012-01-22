@@ -70,7 +70,7 @@ int MDSmallReservoirCapacityDef () {
 		
 	if ((optID == MDnone) || (_MDOutSmallResCapacityID != MFUnset)) return (_MDOutSmallResCapacityID);
 
-	MFDefEntering("SmallReservoirCapacity");
+	MFDefEntering("SmallReservoirCapacity",__FILE__);
 	if ((_MDInIrrGrossDemandID = MDIrrGrossDemandDef  ()) != MFUnset) {
 		switch (optID) {
 			case MDinput:
@@ -90,6 +90,6 @@ int MDSmallReservoirCapacityDef () {
 			default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 		}
 	}
-	MFDefLeaving("SmallReservoirCapacity");
+	MFDefLeaving("SmallReservoirCapacity",__FILE__);
 	return (_MDOutSmallResCapacityID);
 }

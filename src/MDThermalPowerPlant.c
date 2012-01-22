@@ -45,7 +45,7 @@ int MDThermalPowerPlantDef () {
 
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options, optStr, true);
 
-	MFDefEntering ("Thermal Power Plants");
+	MFDefEntering ("Thermal Power Plants",__FILE__);
 	switch (optID) {
 		case MDinput:
 			if (((_MDOutThermalWdlID    = MFVarGetID (MDVarThermalWdl,            "m3", MFInput, MFState, MFBoundary)) == CMfailed) ||
@@ -61,7 +61,7 @@ int MDThermalPowerPlantDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Thermal Power Plants");
+	MFDefLeaving ("Thermal Power Plants",__FILE__);
 	return (_MDOutThermalWdlID);
 }
 

@@ -97,7 +97,7 @@ static void _MDWaterBalance(int itemID) {
 
 int MDWaterBalanceDef() {
  
-	MFDefEntering ("WaterBalance");
+	MFDefEntering ("WaterBalance",__FILE__);
 	if ((                                  MDAccumBalanceDef     ()  == CMfailed) ||
 	    ((_MDInPrecipID                  = MDPrecipitationDef    ()) == CMfailed) ||
 	    ((_MDInDischargeID               = MDDischargeDef        ()) == CMfailed) ||
@@ -129,6 +129,6 @@ int MDWaterBalanceDef() {
 			    return (CMfailed);
 		}
 	}
-	MFDefLeaving ("WaterBalance");
+	MFDefLeaving ("WaterBalance",__FILE__);
 	return (_MDOutWaterBalanceID);	
 }

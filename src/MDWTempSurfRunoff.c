@@ -70,7 +70,7 @@ int MDWTempSurfRunoffDef () {
 
 	if (_MDOutWTempSurfROID != MFUnset) return (_MDOutWTempSurfROID);
 
-	MFDefEntering ("Surface runoff temperature");
+	MFDefEntering ("Surface runoff temperature",__FILE__);
 
 	if (((_MDInPrecipID       = MDPrecipitationDef ()) == CMfailed) ||
 	    ((_MDInSnowMeltID     = MDSPackMeltDef     ()) == CMfailed) ||
@@ -79,6 +79,6 @@ int MDWTempSurfRunoffDef () {
 	    ((_MDOutWTempSurfROID = MFVarGetID (MDVarWTempSurfRunoff, "degC", MFOutput, MFState, MFBoundary)) == CMfailed) ||
         (MFModelAddFunction (_MDWTempSurfRunoff) == CMfailed)) return (CMfailed);
 
-	MFDefLeaving ("Surface runoff temperature");
+	MFDefLeaving ("Surface runoff temperature",__FILE__);
 	return (_MDOutWTempSurfROID);
 }

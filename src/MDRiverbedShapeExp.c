@@ -75,7 +75,7 @@ int MDRiverbedShapeExponentDef () {
 
 	if (_MDOutRiverbedShapeExponentID != MFUnset) return (_MDOutRiverbedShapeExponentID);
 
-	MFDefEntering ("Riverbed Geometry");
+	MFDefEntering ("Riverbed Geometry",__FILE__);
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
 
 	switch (optID) {
@@ -99,6 +99,6 @@ int MDRiverbedShapeExponentDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Riverbed Geometry");
+	MFDefLeaving ("Riverbed Geometry",__FILE__);
 	return (_MDOutRiverbedShapeExponentID);
 }

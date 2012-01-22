@@ -51,7 +51,7 @@ int MDLeafAreaIndexDef () {
 
 	if (_MDOutLeafAreaIndexID != MFUnset) return (_MDOutLeafAreaIndexID);
 
-	MFDefEntering ("Leaf Area");
+	MFDefEntering ("Leaf Area",__FILE__);
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
 	switch (optID) {
 		case MDinput:  _MDOutLeafAreaIndexID = MFVarGetID (MDVarLeafAreaIndex, MFNoUnit, MFInput, MFState, MFBoundary); break;
@@ -64,7 +64,7 @@ int MDLeafAreaIndexDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Leaf Area");
+	MFDefLeaving ("Leaf Area",__FILE__);
 	return (_MDOutLeafAreaIndexID);
 }
 
@@ -96,7 +96,7 @@ int MDStemAreaIndexDef () {
 
 	if (_MDOutStemAreaIndexID != MFUnset) return (_MDOutStemAreaIndexID);
 
-	MFDefEntering ("Stem Area Index");
+	MFDefEntering ("Stem Area Index",__FILE__);
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
 	switch (optID) {
 		case MDinput:  _MDOutStemAreaIndexID = MFVarGetID (MDVarStemAreaIndex, MFNoUnit, MFInput, MFState, MFBoundary); break;
@@ -108,6 +108,6 @@ int MDStemAreaIndexDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Stem Area Index");
+	MFDefLeaving ("Stem Area Index",__FILE__);
 	return (_MDOutStemAreaIndexID);
 }

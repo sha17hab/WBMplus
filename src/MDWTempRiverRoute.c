@@ -446,7 +446,7 @@ int MDWTempRiverRouteDef () {
   
 	if (_MDWTempRiverRouteID != MFUnset) return (_MDWTempRiverRouteID);
 
-	MFDefEntering ("Route river temperature");
+	MFDefEntering ("Route river temperature",__FILE__);
 	
 	if (((optStr = MFOptionGet (MDOptReservoirs))  == (char *) NULL) ||
        ((optID  = CMoptLookup ( options, optStr, true)) == CMfailed)) {
@@ -492,6 +492,6 @@ int MDWTempRiverRouteDef () {
        ((_MDWTempMixing_QxTID        = MFVarGetID (MDVarWTempMixing_QxT,        "degC",      MFOutput, MFState, MFBoundary)) == CMfailed)   ||
        (MFModelAddFunction (_MDWTempRiverRoute) == CMfailed)) return (CMfailed);
       
-	   MFDefLeaving ("Route river temperature");
+	   MFDefLeaving ("Route river temperature",__FILE__);
 	   return (_MDWTemp_QxTID);
 }

@@ -239,7 +239,7 @@ int MDBgcDINRoutingDef () {
 
 	if (_MDFlux_DINID != MFUnset)	return (_MDFlux_DINID);
 
-	MFDefEntering ("DIN Routing Calculation");
+	MFDefEntering ("DIN Routing Calculation",__FILE__);
 	if (((optStr = MFOptionGet (MDOptReservoirs))  == (char *) NULL) || ((optID = CMoptLookup ( options, optStr, true)) == CMfailed)) {
 						CMmsgPrint(CMmsgUsrError,"Reservoir Option not specified! Option none or calculate \n");
 						return CMfailed;
@@ -276,6 +276,6 @@ int MDBgcDINRoutingDef () {
         ((_MDFluxMixing_DINID         = MFVarGetID (MDVarDINFlux_Mixing ,         "kg/day", MFRoute,  MFFlux,  MFBoundary)) == CMfailed) ||
         (MFModelAddFunction (_MDDINRouting) == CMfailed)) return (CMfailed); 
 
-	MFDefLeaving ("DIN Routing Calculation");
+	MFDefLeaving ("DIN Routing Calculation",__FILE__);
 	return (_MDFlux_DINID); 
 }

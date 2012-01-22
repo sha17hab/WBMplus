@@ -46,7 +46,7 @@ int MDCParamAlbedoDef () {
 
 	if (_MDOutCParamAlbedoID != MFUnset) return (_MDOutCParamAlbedoID);
 
-	MFDefEntering ("Albedo");
+	MFDefEntering ("Albedo",__FILE__);
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
 
 	switch (optID) {
@@ -59,7 +59,7 @@ int MDCParamAlbedoDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Albedo");
+	MFDefLeaving ("Albedo",__FILE__);
 	return (_MDOutCParamAlbedoID); 
 }
 
@@ -88,7 +88,7 @@ int MDCParamCHeightDef ()
 
 	if (_MDOutCParamCHeightID != MFUnset) return (_MDOutCParamCHeightID);
 
-	MFDefEntering ("Canopy Height");
+	MFDefEntering ("Canopy Height",__FILE__);
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
 
 	switch (optID) {
@@ -100,7 +100,7 @@ int MDCParamCHeightDef ()
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Canopy Height");
+	MFDefLeaving ("Canopy Height",__FILE__);
 	return (_MDOutCParamCHeightID); 
 }
 
@@ -128,7 +128,7 @@ int MDCParamLWidthDef () {
 
 	if (_MDOutCParamLWidthID != MFUnset) return (_MDOutCParamLWidthID);
 
-	MFDefEntering ("Leaf Width");
+	MFDefEntering ("Leaf Width",__FILE__);
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
 
 	switch (optID) {
@@ -140,7 +140,7 @@ int MDCParamLWidthDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Leaf Width");
+	MFDefLeaving ("Leaf Width",__FILE__);
 	return (_MDOutCParamLWidthID); 
 }
 
@@ -155,7 +155,7 @@ int MDCParamRSSDef () {
 
 	if (_MDOutCParamRSSID != MFUnset) return (_MDOutCParamRSSID);
 
-	MFDefEntering ("RSS");
+	MFDefEntering ("RSS",__FILE__);
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
 
 	switch (optID) {
@@ -167,7 +167,7 @@ int MDCParamRSSDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("RSS");
+	MFDefLeaving ("RSS",__FILE__);
 	return (_MDOutCParamRSSID); 
 }
 
@@ -195,7 +195,7 @@ int MDCParamR5Def () {
 
 	if (_MDOutCParamR5ID != MFUnset) return (_MDOutCParamR5ID);
 
-	MFDefEntering ("R5");
+	MFDefEntering ("R5",__FILE__);
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
 
 	switch (optID) {
@@ -207,7 +207,7 @@ int MDCParamR5Def () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("R5");
+	MFDefLeaving ("R5",__FILE__);
 	return (_MDOutCParamR5ID); 
 }
 
@@ -234,7 +234,7 @@ int MDCParamCDDef () {
 
 	if (_MDOutCParamCDID != MFUnset) return (_MDOutCParamCDID);
 
-	MFDefEntering ("CD");
+	MFDefEntering ("CD",__FILE__);
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
 
 	switch (optID) {
@@ -246,7 +246,7 @@ int MDCParamCDDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("CD");
+	MFDefLeaving ("CD",__FILE__);
 	return (_MDOutCParamCDID); 
 }
 
@@ -274,7 +274,7 @@ int MDCParamCRDef () {
 
 	if (_MDOutCParamCRID != MFUnset) return (_MDOutCParamCRID);
 
-	MFDefEntering ("CR");
+	MFDefEntering ("CR",__FILE__);
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
 
 	switch (optID) {
@@ -286,7 +286,7 @@ int MDCParamCRDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("CR");
+	MFDefLeaving ("CR",__FILE__);
 	return (_MDOutCParamCRID); 
 }
 
@@ -315,7 +315,7 @@ int MDCParamGLMaxDef ()
 
 	if (_MDOutCParamGLMaxID != MFUnset) return (_MDOutCParamGLMaxID);
 
-	MFDefEntering ("GLMax");
+	MFDefEntering ("GLMax",__FILE__);
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
 
 	switch (optID) {
@@ -327,7 +327,7 @@ int MDCParamGLMaxDef ()
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("GLMax");
+	MFDefLeaving ("GLMax",__FILE__);
 	return (_MDOutCParamGLMaxID); 
 }
 
@@ -356,7 +356,7 @@ int MDCParamLPMaxDef () {
 
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
 
-	MFDefEntering ("LPMax");
+	MFDefEntering ("LPMax",__FILE__);
 	switch (optID) {
 		case MDinput:  _MDOutCParamLPMaxID = MFVarGetID (MDVarCParamLPMax,  MFNoUnit, MFInput, MFState, false); break;
 		case MDlookup:
@@ -366,7 +366,7 @@ int MDCParamLPMaxDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("LPMax");
+	MFDefLeaving ("LPMax",__FILE__);
 	return (_MDOutCParamLPMaxID); 
 }
 
@@ -395,7 +395,7 @@ int MDCParamZ0gDef () {
 
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
 
-	MFDefEntering ("Z0g");
+	MFDefEntering ("Z0g",__FILE__);
 	switch (optID) {
 		case MDinput: _MDOutCParamZ0gID = MFVarGetID (MDVarCParamZ0g,  "m", MFInput, MFState, false); break;
 		case MDlookup:
@@ -405,6 +405,6 @@ int MDCParamZ0gDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Z0g");
+	MFDefLeaving ("Z0g",__FILE__);
 	return (_MDOutCParamZ0gID); 
 }

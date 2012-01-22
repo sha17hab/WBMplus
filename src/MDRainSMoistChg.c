@@ -121,7 +121,7 @@ int MDRainSMoistChgDef () {
 	}
 	if (((optStr = MFOptionGet (MDParSoilMoistALPHA))  != (char *) NULL) && (sscanf (optStr,"%f",&par) == 1)) _MDSoilMoistALPHA = par;
 	
-	MFDefEntering ("Rainfed Soil Moisture");
+	MFDefEntering ("Rainfed Soil Moisture",__FILE__);
 	if (soilTemperatureID == MFcalculate ) {
 		if (((ret                        = MDPermafrostDef()) == CMfailed) ||
 		    ((_MDInRelativeIceContent    = MFVarGetID ("SoilIceContent_01",     "mm",   MFOutput,  MFState, MFBoundary)) == CMfailed) ||
@@ -142,6 +142,6 @@ int MDRainSMoistChgDef () {
 	    ((_MDOutSoilMoistID        = MFVarGetID (MDVarRainSoilMoisture,           "mm",   MFOutput, MFState, MFBoundary)) == CMfailed) ||
         ((_MDOutSMoistChgID        = MFVarGetID (MDVarRainSoilMoistChange,        "mm",   MFOutput, MFState, MFBoundary)) == CMfailed) ||
         (MFModelAddFunction (_MDRainSMoistChg) == CMfailed)) return (CMfailed);
-	MFDefLeaving ("Rainfed Soil Moisture");
+	MFDefLeaving ("Rainfed Soil Moisture",__FILE__);
 	return (_MDOutSMoistChgID);
 }
