@@ -31,7 +31,7 @@ int main (int argc,char *argv []) {
 		case MDdischarge:    return (MFModelRun (argc,argv,argNum,MDDischargeDef));
 		case MDbalance:      return (MFModelRun (argc,argv,argNum,MDWaterBalanceDef));
 		case MDwatertemp:    return (MFModelRun (argc,argv,argNum,MDWTempRiverRouteDef));
-		case MDthermal:		 return (MFModelRun (argc,argv,argNum,MDThermalInputsDef));		// RJS 013112
+		case MDthermal:		return (MFModelRun (argc,argv,argNum,MDThermalInputsDef));		// RJS 013112
 		case MDgeometry:     return (MFModelRun (argc,argv,argNum,MDRiverWidthDef));
 		case MDbgc:          return (MFModelRun (argc,argv,argNum,MDBgcRoutingDef));
 		case MDbgc_DOC:      return (MFModelRun (argc,argv,argNum,MDBgcDOCRoutingDef));
