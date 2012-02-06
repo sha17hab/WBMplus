@@ -298,7 +298,7 @@ int MDBgcRoutingDef () {
 
 	if (_MDFlux_NO3ID != MFUnset)	return (_MDFlux_NO3ID);
 
-	MFDefEntering ("Nutrient Calculation",__FILE__);
+	MFDefEntering ("Nutrient Calculation");
 			
    // Input
 	if (((_MDInDischargeID           = MDDischargeDef    ()) == CMfailed) ||
@@ -342,6 +342,6 @@ int MDBgcRoutingDef () {
 		    ((_MDInResStorageID        = MFVarGetID (MDVarReservoirStorage,       "km3",     MFInput, MFState, MFInitial))   == CMfailed))
 	    	return (CMfailed);
 	}
-	MFDefLeaving ("Nutrient Calculation",__FILE__);
+	MFDefLeaving ("Nutrient Calculation");
 	return (_MDFlux_NO3ID); 
 }

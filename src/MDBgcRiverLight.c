@@ -120,7 +120,7 @@ int MDBgcRiverLightDef () {
 
 	if (_MDRiverLightID != MFUnset) return (_MDRiverLightID);
 
-	MFDefEntering ("Calculate river light",__FILE__);
+	MFDefEntering ("Calculate river light");
 	
 	if (((optStr = MFOptionGet (MDOptReservoirs))  == (char *) NULL) || ((optID = CMoptLookup ( options, optStr, true)) == CMfailed)) {
 				CMmsgPrint(CMmsgUsrError,"Reservoir Option not specified! Option none or calculate \n");
@@ -151,6 +151,6 @@ int MDBgcRiverLightDef () {
 
        (MFModelAddFunction (_MDRiverLight) == CMfailed)) return (CMfailed);
       
-	   MFDefLeaving ("Calculate river light",__FILE__);
+	   MFDefLeaving ("Calculate river light");
 	   return (_MDRiverLightID);
 }

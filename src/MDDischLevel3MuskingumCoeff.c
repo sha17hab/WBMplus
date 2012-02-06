@@ -97,7 +97,7 @@ int MDDischLevel3MuskingumCoeffDef () {
 
 	if (_MDOutMuskingumC0ID != MFUnset) return (_MDOutMuskingumC0ID);
 
-	MFDefEntering ("Muskingum Coefficients",__FILE__);
+	MFDefEntering ("Muskingum Coefficients");
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options, optStr, true);
 	switch (optID) {
 		case MDinput:
@@ -120,6 +120,6 @@ int MDDischLevel3MuskingumCoeffDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Muskingum Coefficients",__FILE__);
+	MFDefLeaving ("Muskingum Coefficients");
 	return (_MDOutMuskingumC0ID);
 }

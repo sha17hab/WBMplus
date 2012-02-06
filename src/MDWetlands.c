@@ -154,7 +154,7 @@ int MDWetlandRunoffDef () {
 	if ((_MDInWetlandAreaFracID = MDWetlandAreaDef ()) == CMfailed) return (CMfailed);
 		if  (_MDInWetlandAreaFracID == MFUnset) return (MFUnset);
 	
-		MFDefEntering ("Wetlands",__FILE__);
+		MFDefEntering ("Wetlands");
 
 	   if (((_MDInRainSurfRunoffID      = MDRainSurfRunoffDef   ()) == CMfailed) ||
 	    	((_MDInWetlandAreaFracID         = MDWetlandAreaDef    ()) == CMfailed) ||
@@ -169,7 +169,7 @@ int MDWetlandRunoffDef () {
 	        ((_MDOutWetlandEvapotranspID      = MFVarGetID (MDVarWetlandEvapotranspiration,       "mm", MFOutput, MFFlux,  MFBoundary)) == CMfailed) ||
 	        ((_MDOutWetlandStorageChangeID = MFVarGetID (MDVarWetlandStorageChange,     "mm", MFOutput, MFState, MFBoundary)) == CMfailed) ||
 	        ((MFModelAddFunction (_MDWetlandRunoff) == CMfailed))) return (CMfailed);
-		MFDefLeaving("Wetlands",__FILE__);
+		MFDefLeaving("Wetlands");
 		return (_MDOutWetlandRunoffID);
 	}
 

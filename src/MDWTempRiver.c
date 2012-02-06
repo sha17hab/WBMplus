@@ -80,7 +80,7 @@ int MDWTempRiverDef () {
 
 	if (_MDOutWTempRiverID != MFUnset) return (_MDOutWTempRiverID);
 
-	MFDefEntering ("River temperature",__FILE__);
+	MFDefEntering ("River temperature");
 
 	if (((_MDInSurfRunoffID      = MDRainSurfRunoffDef ()) == CMfailed) ||
 	    ((_MDInBaseFlowID        = MDBaseFlowDef       ()) == CMfailed) ||
@@ -89,6 +89,6 @@ int MDWTempRiverDef () {
 	    ((_MDOutWTempRiverID     = MFVarGetID (MDVarWTempRiver, "degC", MFOutput, MFState, MFBoundary)) == CMfailed) ||	
 	    (MFModelAddFunction (_MDWTempRiver) == CMfailed)) return (CMfailed);
 
-	MFDefLeaving ("River temperature",__FILE__);
+	MFDefLeaving ("River temperature");
 	return (_MDOutWTempRiverID);
 }

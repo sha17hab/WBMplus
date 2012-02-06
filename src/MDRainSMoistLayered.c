@@ -460,7 +460,7 @@ int MDRainSMoistChgLayeredSoilDef () {
 		}
 
 
-		MFDefEntering ("Rainfed Layered Soil Moisture",__FILE__);
+		MFDefEntering ("Rainfed Layered Soil Moisture");
 		if (soilTemperatureID ==1){
 	//		printf ("SoilTemp is on before\n");
 		
@@ -582,7 +582,7 @@ int MDRainSMoistChgLayeredSoilDef () {
         
         (MFModelAddFunction (_MDRainSMoistChg) == CMfailed)) return (CMfailed);
 
-	MFDefLeaving ("Rainfed Layered Soil Moisture",__FILE__);
+	MFDefLeaving ("Rainfed Layered Soil Moisture");
 	return (_MDOutSMoistChgID);
 }
  

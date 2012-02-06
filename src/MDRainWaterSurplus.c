@@ -82,7 +82,7 @@ int MDRainWaterSurplusDef () {
 	 	}
 	
 	
-	MFDefEntering ("Rainfed Water Surplus",__FILE__);
+	MFDefEntering ("Rainfed Water Surplus");
 	if ((ret = MDIrrGrossDemandDef ()) == CMfailed) return (CMfailed);
 	if ((ret != MFUnset) &&
 			  ((_MDInIrrAreaFracID         = MDIrrigatedAreaDef    ())==  CMfailed) )
@@ -108,6 +108,6 @@ int MDRainWaterSurplusDef () {
 	
 	if (((_MDOutRainWaterSurplusID  = MFVarGetID (MDVarRainWaterSurplus,       "mm", MFOutput, MFFlux,  MFBoundary)) == CMfailed)) return CMfailed;
 	if ((MFModelAddFunction (_MDRainWaterSurplus) == CMfailed)) return (CMfailed);
-	MFDefLeaving ("Rainfed Water Surplus",__FILE__);
+	MFDefLeaving ("Rainfed Water Surplus");
 	return (_MDOutRainWaterSurplusID);
 }

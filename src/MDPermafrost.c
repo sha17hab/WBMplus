@@ -604,7 +604,7 @@ int MDPermafrostDef () {
     int i;
     
     if (_MDOutActiveLayerDepthID != MFUnset) return (_MDOutActiveLayerDepthID);
-	MFDefEntering ("Permafrost",__FILE__);
+	MFDefEntering ("Permafrost");
     
 	for (i = 0; i < _MDNumberOfSoilComputationNodes; i++) {
 			_MDOutSoilTemperatureIDs =         (int *) realloc (_MDOutSoilTemperatureIDs,         (i + 1) * sizeof (int));
@@ -737,6 +737,6 @@ int MDPermafrostDef () {
        (MFModelAddFunction (_MDPermafrostDepth) == CMfailed)) return (CMfailed);
 	
  
-	MFDefLeaving ("Permafrost",__FILE__);
+	MFDefLeaving ("Permafrost");
 	return (_MDOutActiveLayerDepthID);
 }

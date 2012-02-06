@@ -96,7 +96,7 @@ static void _MDIrrRefEvapotransFAO (int itemID) {
 int MDIrrRefEvapotransFAODef () {
 	if (_MDOutIrrRefEvapotransID != MFUnset) return (_MDOutIrrRefEvapotransID);
 
-	MFDefEntering ("Irrigation Reference ETP (FAO)",__FILE__);
+	MFDefEntering ("Irrigation Reference ETP (FAO)");
 	if (((_MDInDayLengthID          = MDSRadDayLengthDef ()) == CMfailed) ||
 		 ((_MDInI0HDayID            = MDSRadI0HDayDef    ()) == CMfailed) ||
 		 ((_MDInSolRadID            = MDSolarRadDef      ()) == CMfailed) ||
@@ -109,6 +109,6 @@ int MDIrrRefEvapotransFAODef () {
 		 ((_MDOutIrrRefEvapotransID = MFVarGetID (MDVarIrrRefEvapotrans,  "mm",    MFOutput, MFFlux,  MFBoundary)) == CMfailed)) return (CMfailed);
     if (MFModelAddFunction (_MDIrrRefEvapotransFAO)== CMfailed) return (CMfailed);
 
-	MFDefLeaving ("Irrigation Reference ETP (FAO)",__FILE__);
+	MFDefLeaving ("Irrigation Reference ETP (FAO)");
 	return(_MDOutIrrRefEvapotransID);
 }

@@ -36,7 +36,7 @@ int MDSurfRunoffDef () {
 	int ret;
 	if (_MDOutSurfRunoffID != MFUnset) return (_MDOutSurfRunoffID);
 
-	MFDefEntering ("Surface runoff",__FILE__);
+	MFDefEntering ("Surface runoff");
 	 
 	if (((ret = MDWetlandRunoffDef ()) != MFUnset) &&
 	    ((ret == CMfailed) ||
@@ -52,6 +52,6 @@ int MDSurfRunoffDef () {
 	if (((_MDInRainSurfRunoffID  = MDRainSurfRunoffDef ()) == CMfailed) ||
 	    ((_MDOutSurfRunoffID     = MFVarGetID (MDVarSurfRunoff,     "mm",   MFOutput, MFFlux,  MFBoundary))  == CMfailed) ||
        (MFModelAddFunction (_MDSurfRunoff) == CMfailed)) return (CMfailed);
-	MFDefLeaving ("Surface runoff",__FILE__);
+	MFDefLeaving ("Surface runoff");
 	return (_MDOutSurfRunoffID);
 }

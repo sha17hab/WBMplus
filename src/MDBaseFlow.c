@@ -109,7 +109,7 @@ int MDBaseFlowDef () {
 
 	if (_MDOutBaseFlowID != MFUnset) return (_MDOutBaseFlowID);
 
-	MFDefEntering ("Base flow",__FILE__);
+	MFDefEntering ("Base flow");
 	if (((optStr = MFOptionGet (MDParGroundWatBETA))  != (char *) NULL) && (sscanf (optStr,"%f",&par) == 1)) _MDGroundWatBETA = par;
 
 	if (((_MDInRechargeID       = MDRainInfiltrationDef ()) == CMfailed) ||
@@ -130,7 +130,7 @@ int MDBaseFlowDef () {
 	    ((_MDOutBaseFlowID              = MFVarGetID (MDVarBaseFlow,            "mm", MFOutput, MFFlux,  MFBoundary)) == CMfailed) ||
 	    (MFModelAddFunction (_MDBaseFlow) == CMfailed)) return (CMfailed);
 
-	MFDefLeaving ("Base flow ",__FILE__);
+	MFDefLeaving ("Base flow ");
 	return (_MDOutBaseFlowID);
 }
 

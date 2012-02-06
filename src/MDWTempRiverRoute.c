@@ -37,9 +37,9 @@ static int _MDInSnowPackID             = MFUnset;
 static int _MDInResStorageChangeID     = MFUnset;
 static int _MDInResStorageID           = MFUnset;
 static int _MDInResCapacityID     	   = MFUnset;
-static int _MDInWdl_QxTID              = MFUnset;	//RJS 082011
-static int _MDInThermalWdlID           = MFUnset;	//RJS 082011
-static int _MDInWarmingTempID          = MFUnset;	//RJS 082011
+//static int _MDInWdl_QxTID              = MFUnset;	//RJS 082011	//commented out 013112
+//static int _MDInThermalWdlID           = MFUnset;	//RJS 082011	//commented out 013112
+//static int _MDInWarmingTempID          = MFUnset;	//RJS 082011	//commented out 013112
 // Output
 static int _MDLocalIn_QxTID            = MFUnset;
 static int _MDRemoval_QxTID            = MFUnset;
@@ -103,19 +103,19 @@ static void _MDWTempRiverRoute (int itemID) {
      
      float resCapacity;		//RJS 071511	Reservoir capacity [km3]
 
-     float QxT_postThermal;			//RJS 081311
-     float QxT_mix_postThermal;		//RJS 081311
-     float Q_WTemp_postThermal;		//RJS 081311
-     float Q_WTemp_mix_postThermal;	//RJS 081311
-     float warmingTemp;				//RJS 081311
-     float wdl_QxT;					//RJS 081311
-     float thermal_wdl;				//RJS 081311
+//     float QxT_postThermal;			//RJS 081311	//commented out 013112
+//     float QxT_mix_postThermal;		//RJS 081311	//commented out 013112
+//     float Q_WTemp_postThermal;		//RJS 081311	//commented out 013112
+//     float Q_WTemp_mix_postThermal;	//RJS 081311	//commented out 013112
+//     float warmingTemp;				//RJS 081311	//commented out 013112
+//     float wdl_QxT;					//RJS 081311	//commented out 013112
+//     float thermal_wdl;				//RJS 081311	//commented out 013112
 
-     float StorexT_postThermal;				//RJS 081711
-     float DeltaStorexT_postThermal;		//RJS 081711
-     float StorexT_mix_postThermal;			//RJS 081711
-     float DeltaStorexT_mix_postThermal;	//RJS 081711
-     float deltaT_postThermal;				//RJS 081711
+//     float StorexT_postThermal;				//RJS 081711	//commented out 013112
+//     float DeltaStorexT_postThermal;		//RJS 081711		//commented out 013112
+//     float StorexT_mix_postThermal;			//RJS 081711	//commented out 013112
+//     float DeltaStorexT_mix_postThermal;	//RJS 081711		//commented out 013112
+//    float deltaT_postThermal;				//RJS 081711		//commented out 013112
 
      day = MFDateGetCurrentDay();
      month = MFDateGetCurrentMonth();
@@ -150,9 +150,9 @@ static void _MDWTempRiverRoute (int itemID) {
      StorexT               = MFVarGetFloat (_MDStorage_QxTID,         itemID, 0.0);
      QxT_mix               = MFVarGetFloat (_MDFluxMixing_QxTID,      itemID, 0.0);
      StorexT_mix           = MFVarGetFloat (_MDStorageMixing_QxTID,   itemID, 0.0);
-     warmingTemp	   = MFVarGetFloat (_MDInWarmingTempID,    itemID, 0.0);	//RJS 072011
-     wdl_QxT		   = MFVarGetFloat (_MDInWdl_QxTID,        itemID, 0.0);	//RJS 072011
-     thermal_wdl	   = MFVarGetFloat (_MDInThermalWdlID, 	   itemID, 0.0)* 1000000 / 365 / 86400;	//RJS 072011
+//     warmingTemp	   = MFVarGetFloat (_MDInWarmingTempID,    itemID, 0.0);	//RJS 072011						//commented out 013112
+//     wdl_QxT		   = MFVarGetFloat (_MDInWdl_QxTID,        itemID, 0.0);	//RJS 072011						//commented out 013112
+//     thermal_wdl	   = MFVarGetFloat (_MDInThermalWdlID, 	   itemID, 0.0)* 1000000 / 365 / 86400;	//RJS 072011	//commented out 013112
 
     // if (itemID == 5132){
     //        	printf("Stop itemID %d day %d \n", itemID, MFDateGetCurrentDay());
@@ -209,16 +209,16 @@ static void _MDWTempRiverRoute (int itemID) {
     //    if (itemID == 4704) printf("m = %d, d = %d, itemID = %d, QxTout = %f, QxTout_mix = %f, Q = %f, Q_WTemp_new = %f\n", MFDateGetCurrentMonth (), MFDateGetCurrentDay (), itemID, QxTout, QxTout_mix, Q, Q_WTemp_new);
 
 
-    	 //New experimental
-    	          	QxT_postThermal          = thermal_wdl > Q ? 86400 * Q * (Q_WTemp_new + warmingTemp) : 86400 * ((thermal_wdl * (Q_WTemp_new + warmingTemp)) + ((Q - thermal_wdl) * Q_WTemp_new));
-         		QxT_mix_postThermal      = thermal_wdl > Q ? 86400 * Q * (Q_WTemp_mix + warmingTemp) : 86400 * ((thermal_wdl * (Q_WTemp_mix + warmingTemp)) + ((Q - thermal_wdl) * Q_WTemp_mix));
-         		Q_WTemp_postThermal      = Q > 0.000001 ? QxT_postThermal / (Q * 86400) : 0.0;
-    	          	Q_WTemp_mix_postThermal  = Q > 0.000001 ? QxT_mix_postThermal / (Q * 86400) : 0.0;
-    	          	StorexT_postThermal		 = waterStorage * Q_WTemp_postThermal;
-    	          	DeltaStorexT_postThermal = StorexT_postThermal - StorexT;
-    	          	StorexT_mix_postThermal  = waterStorage * Q_WTemp_mix_postThermal;
-    	          	DeltaStorexT_mix_postThermal = StorexT_mix_postThermal - StorexT_mix;
-    	          	deltaT_postThermal = Q_WTemp_postThermal - Q_WTemp;
+    	 //New experimental    //commented out next 9 lines 013112
+    	 //         	QxT_postThermal          = thermal_wdl > Q ? 86400 * Q * (Q_WTemp_new + warmingTemp) : 86400 * ((thermal_wdl * (Q_WTemp_new + warmingTemp)) + ((Q - thermal_wdl) * Q_WTemp_new));
+    	 //         	QxT_mix_postThermal      = thermal_wdl > Q ? 86400 * Q * (Q_WTemp_mix + warmingTemp) : 86400 * ((thermal_wdl * (Q_WTemp_mix + warmingTemp)) + ((Q - thermal_wdl) * Q_WTemp_mix));
+    	 //         	Q_WTemp_postThermal      = Q > 0.000001 ? QxT_postThermal / (Q * 86400) : 0.0;
+    	 //         	Q_WTemp_mix_postThermal  = Q > 0.000001 ? QxT_mix_postThermal / (Q * 86400) : 0.0;
+    	 //         	StorexT_postThermal		 = waterStorage * Q_WTemp_postThermal;
+    	 //         	DeltaStorexT_postThermal = StorexT_postThermal - StorexT;
+    	 //        	StorexT_mix_postThermal  = waterStorage * Q_WTemp_mix_postThermal;
+    	 //         	DeltaStorexT_mix_postThermal = StorexT_mix_postThermal - StorexT_mix;
+    	 //         	deltaT_postThermal = Q_WTemp_postThermal - Q_WTemp;
 
 //	if (itemID == 5033) printf("QxT_pt = %f, Q_WTemp_pt = %f\n", QxT_postThermal, Q_WTemp_postThermal);
 	//if (itemID == 4704) printf("QxT_pt = %f, Q_WTemp_pt = %f\n", QxT_postThermal, Q_WTemp_postThermal);
@@ -228,24 +228,24 @@ static void _MDWTempRiverRoute (int itemID) {
 
     	          MFVarSetFloat(_MDLocalIn_QxTID, itemID, QxT_input);
     	 //         MFVarSetFloat(_MDRemoval_QxTID, itemID, QxTRemoval);
-    	 //         MFVarSetFloat(_MDFlux_QxTID, itemID, QxTout);
-    	          MFVarSetFloat(_MDFlux_QxTID, itemID, QxT_postThermal);					//RJS new
-    	 //         MFVarSetFloat(_MDStorage_QxTID, itemID, StorexT_new);
-    	          MFVarSetFloat(_MDStorage_QxTID, itemID, StorexT_postThermal);			//RJS new
-    	 //         MFVarSetFloat(_MDDeltaStorage_QxTID, itemID, DeltaStorexT);
-    	          MFVarSetFloat(_MDDeltaStorage_QxTID, itemID, DeltaStorexT_postThermal); //RJS new
-    	 //         MFVarSetFloat(_MDWTemp_QxTID, itemID, Q_WTemp_new);
-    	          MFVarSetFloat(_MDWTemp_QxTID, itemID, Q_WTemp_postThermal);			//RJS new
-    	 //         MFVarSetFloat(_MDWTempDeltaT_QxTID, itemID, deltaT);
-    	 //         MFVarSetFloat(_MDWTempDeltaT_QxTID, itemID, deltaT_postThermal);		//RJS new
-    	 //         MFVarSetFloat(_MDFluxMixing_QxTID, itemID, QxTout_mix);
-    	          MFVarSetFloat(_MDFluxMixing_QxTID, itemID, QxT_mix_postThermal);		//RJS new
-    	 //         MFVarSetFloat(_MDStorageMixing_QxTID, itemID, StorexT_new_mix);
-    	          MFVarSetFloat(_MDStorageMixing_QxTID, itemID, StorexT_mix_postThermal);	//RJS new
-    	 //         MFVarSetFloat(_MDDeltaStorageMixing_QxTID, itemID, DeltaStorexT_mix);
-    	          MFVarSetFloat(_MDDeltaStorageMixing_QxTID, itemID, DeltaStorexT_mix_postThermal);	//RJS new
-    	 //         MFVarSetFloat(_MDWTempMixing_QxTID, itemID, Q_WTemp_mix);
-    	          MFVarSetFloat(_MDWTempMixing_QxTID, itemID, Q_WTemp_mix_postThermal);				//RJS new
+    	          MFVarSetFloat(_MDFlux_QxTID, itemID, QxTout);
+    	 //         MFVarSetFloat(_MDFlux_QxTID, itemID, QxT_postThermal);					//RJS new  //commented out 013112, uncommented above line
+    	          MFVarSetFloat(_MDStorage_QxTID, itemID, StorexT_new);
+    	 //         MFVarSetFloat(_MDStorage_QxTID, itemID, StorexT_postThermal);			//RJS new  //commented out 013112, uncommented above line
+    	          MFVarSetFloat(_MDDeltaStorage_QxTID, itemID, DeltaStorexT);
+    	 //         MFVarSetFloat(_MDDeltaStorage_QxTID, itemID, DeltaStorexT_postThermal); //RJS new  //commented out 013112, uncommented above line
+    	          MFVarSetFloat(_MDWTemp_QxTID, itemID, Q_WTemp_new);
+    	 //         MFVarSetFloat(_MDWTemp_QxTID, itemID, Q_WTemp_postThermal);			//RJS new  //commented out 013112, uncommented above line
+    	          MFVarSetFloat(_MDWTempDeltaT_QxTID, itemID, deltaT);
+    	 //         MFVarSetFloat(_MDWTempDeltaT_QxTID, itemID, deltaT_postThermal);		//RJS new  //commented out 013112, uncommented above line
+    	          MFVarSetFloat(_MDFluxMixing_QxTID, itemID, QxTout_mix);
+    	 //         MFVarSetFloat(_MDFluxMixing_QxTID, itemID, QxT_mix_postThermal);		//RJS new  //commented out 013112, uncommented above line
+    	          MFVarSetFloat(_MDStorageMixing_QxTID, itemID, StorexT_new_mix);
+    	 //         MFVarSetFloat(_MDStorageMixing_QxTID, itemID, StorexT_mix_postThermal);	//RJS new  //commented out 013112, uncommented above line
+    	          MFVarSetFloat(_MDDeltaStorageMixing_QxTID, itemID, DeltaStorexT_mix);
+    	 //         MFVarSetFloat(_MDDeltaStorageMixing_QxTID, itemID, DeltaStorexT_mix_postThermal);	//RJS new  //commented out 013112, uncommented above line
+    	          MFVarSetFloat(_MDWTempMixing_QxTID, itemID, Q_WTemp_mix);
+    	 //         MFVarSetFloat(_MDWTempMixing_QxTID, itemID, Q_WTemp_mix_postThermal);				//RJS new  //commented out 013112, uncommented above line
 
 //    	 MFVarSetFloat(_MDLocalIn_QxTID, itemID, QxT_input);						//RJS 071511
 ////	       MFVarSetFloat(_MDRemoval_QxTID, itemID, QxTRemoval);						//RJS 071511
@@ -342,16 +342,16 @@ static void _MDWTempRiverRoute (int itemID) {
  //       if (Q_WTemp_new > 50) printf("m = %d, d = %d, itemID = %d, QxT_input = %f, RO_Vol = %f, RO_WTemp = %f\n channelWidth = %f, Q_WTemp = %f, Q_WTemp_new = %f, Q_WTemp_mix = %f, Tair = %f, Q = %f, Q_incoming = %f\n", MFDateGetCurrentMonth (), MFDateGetCurrentDay (), itemID, QxT_input, RO_Vol, RO_WTemp, channelWidth, Q_WTemp, Q_WTemp_new, Q_WTemp_mix, Tair, Q, Q_incoming);
 
 
-         //New experimental
-         	QxT_postThermal          = thermal_wdl > Q ? 86400 * Q * (Q_WTemp_new + warmingTemp) : 86400 * ((thermal_wdl * (Q_WTemp_new + warmingTemp)) + ((Q - thermal_wdl) * Q_WTemp_new));
-         	QxT_mix_postThermal      = thermal_wdl > Q ? 86400 * Q * (Q_WTemp_mix + warmingTemp) : 86400 * ((thermal_wdl * (Q_WTemp_mix + warmingTemp)) + ((Q - thermal_wdl) * Q_WTemp_mix));
-         	Q_WTemp_postThermal      = Q > 0.000001 ? QxT_postThermal / (Q * 86400) : 0.0;
-    	    Q_WTemp_mix_postThermal  = Q > 0.000001 ? QxT_mix_postThermal / (Q * 86400) : 0.0;
-         	StorexT_postThermal		 = waterStorage * Q_WTemp_postThermal;
-         	DeltaStorexT_postThermal = StorexT_postThermal - StorexT;
-         	StorexT_mix_postThermal  = waterStorage * Q_WTemp_mix_postThermal;
-         	DeltaStorexT_mix_postThermal = StorexT_mix_postThermal - StorexT_mix;
-         	deltaT_postThermal = Q_WTemp_postThermal - Q_WTemp;
+         //New experimental   //commented out 9 lines, below 013112
+         //	QxT_postThermal          = thermal_wdl > Q ? 86400 * Q * (Q_WTemp_new + warmingTemp) : 86400 * ((thermal_wdl * (Q_WTemp_new + warmingTemp)) + ((Q - thermal_wdl) * Q_WTemp_new));
+         //	QxT_mix_postThermal      = thermal_wdl > Q ? 86400 * Q * (Q_WTemp_mix + warmingTemp) : 86400 * ((thermal_wdl * (Q_WTemp_mix + warmingTemp)) + ((Q - thermal_wdl) * Q_WTemp_mix));
+         //	Q_WTemp_postThermal      = Q > 0.000001 ? QxT_postThermal / (Q * 86400) : 0.0;
+    	 //   Q_WTemp_mix_postThermal  = Q > 0.000001 ? QxT_mix_postThermal / (Q * 86400) : 0.0;
+         //	StorexT_postThermal		 = waterStorage * Q_WTemp_postThermal;
+         //	DeltaStorexT_postThermal = StorexT_postThermal - StorexT;
+         //	StorexT_mix_postThermal  = waterStorage * Q_WTemp_mix_postThermal;
+         //	DeltaStorexT_mix_postThermal = StorexT_mix_postThermal - StorexT_mix;
+         //	deltaT_postThermal = Q_WTemp_postThermal - Q_WTemp;
 
 //	if (itemID == 5033) printf("QxT_pt = %f, Q_WTemp_pt = %f\n", QxT_postThermal, Q_WTemp_postThermal);
 	//if (itemID == 4704) printf("QxT_pt = %f, Q_WTemp_pt = %f\n", QxT_postThermal, Q_WTemp_postThermal);
@@ -361,24 +361,24 @@ static void _MDWTempRiverRoute (int itemID) {
 
          MFVarSetFloat(_MDLocalIn_QxTID, itemID, QxT_input);
          MFVarSetFloat(_MDRemoval_QxTID, itemID, QxTRemoval);
-//         MFVarSetFloat(_MDFlux_QxTID, itemID, QxTout);
-         MFVarSetFloat(_MDFlux_QxTID, itemID, QxT_postThermal);					//RJS new
-//         MFVarSetFloat(_MDStorage_QxTID, itemID, StorexT_new);
-         MFVarSetFloat(_MDStorage_QxTID, itemID, StorexT_postThermal);			//RJS new
-//         MFVarSetFloat(_MDDeltaStorage_QxTID, itemID, DeltaStorexT);
-         MFVarSetFloat(_MDDeltaStorage_QxTID, itemID, DeltaStorexT_postThermal); //RJS new
-//         MFVarSetFloat(_MDWTemp_QxTID, itemID, Q_WTemp_new);
-         MFVarSetFloat(_MDWTemp_QxTID, itemID, Q_WTemp_postThermal);			//RJS new
-//         MFVarSetFloat(_MDWTempDeltaT_QxTID, itemID, deltaT);
-         MFVarSetFloat(_MDWTempDeltaT_QxTID, itemID, deltaT_postThermal);		//RJS new
-//         MFVarSetFloat(_MDFluxMixing_QxTID, itemID, QxTout_mix);
-         MFVarSetFloat(_MDFluxMixing_QxTID, itemID, QxT_mix_postThermal);		//RJS new
-//         MFVarSetFloat(_MDStorageMixing_QxTID, itemID, StorexT_new_mix);
-         MFVarSetFloat(_MDStorageMixing_QxTID, itemID, StorexT_mix_postThermal);	//RJS new
-//         MFVarSetFloat(_MDDeltaStorageMixing_QxTID, itemID, DeltaStorexT_mix);
-         MFVarSetFloat(_MDDeltaStorageMixing_QxTID, itemID, DeltaStorexT_mix_postThermal);	//RJS new
-//         MFVarSetFloat(_MDWTempMixing_QxTID, itemID, Q_WTemp_mix);
-         MFVarSetFloat(_MDWTempMixing_QxTID, itemID, Q_WTemp_mix_postThermal);				//RJS new
+         MFVarSetFloat(_MDFlux_QxTID, itemID, QxTout);
+//         MFVarSetFloat(_MDFlux_QxTID, itemID, QxT_postThermal);					//RJS new  //commented out, and uncommented above line 013112
+         MFVarSetFloat(_MDStorage_QxTID, itemID, StorexT_new);
+//         MFVarSetFloat(_MDStorage_QxTID, itemID, StorexT_postThermal);			//RJS new //commented out, and uncommented above line 013112
+         MFVarSetFloat(_MDDeltaStorage_QxTID, itemID, DeltaStorexT);
+//         MFVarSetFloat(_MDDeltaStorage_QxTID, itemID, DeltaStorexT_postThermal); //RJS new //commented out, and uncommented above line 013112
+         MFVarSetFloat(_MDWTemp_QxTID, itemID, Q_WTemp_new);
+//         MFVarSetFloat(_MDWTemp_QxTID, itemID, Q_WTemp_postThermal);			//RJS new //commented out, and uncommented above line 013112
+         MFVarSetFloat(_MDWTempDeltaT_QxTID, itemID, deltaT);
+//         MFVarSetFloat(_MDWTempDeltaT_QxTID, itemID, deltaT_postThermal);		//RJS new //commented out, and uncommented above line 013112
+         MFVarSetFloat(_MDFluxMixing_QxTID, itemID, QxTout_mix);
+//         MFVarSetFloat(_MDFluxMixing_QxTID, itemID, QxT_mix_postThermal);		//RJS new //commented out, and uncommented above line 013112
+         MFVarSetFloat(_MDStorageMixing_QxTID, itemID, StorexT_new_mix);
+//         MFVarSetFloat(_MDStorageMixing_QxTID, itemID, StorexT_mix_postThermal);	//RJS new //commented out, and uncommented above line 013112
+         MFVarSetFloat(_MDDeltaStorageMixing_QxTID, itemID, DeltaStorexT_mix);
+//         MFVarSetFloat(_MDDeltaStorageMixing_QxTID, itemID, DeltaStorexT_mix_postThermal);	//RJS new //commented out, and uncommented above line 013112
+         MFVarSetFloat(_MDWTempMixing_QxTID, itemID, Q_WTemp_mix);
+//         MFVarSetFloat(_MDWTempMixing_QxTID, itemID, Q_WTemp_mix_postThermal);				//RJS new //commented out, and uncommented above line 013112
    	     }
          else{
         	 if (waterStorage > 0){
@@ -425,6 +425,11 @@ static void _MDWTempRiverRoute (int itemID) {
     //}
 
 
+//     if (itemID == 0 || itemID == 1) {
+//    	 printf("**** itemID = %d, Y = %d, M = %d, D = %d ****\n", itemID, MFDateGetCurrentYear(), MFDateGetCurrentMonth(), MFDateGetCurrentDay());
+//    	 printf("Route: WTemp = %f, WTempMix = %f, flux = %f, fluxMix = %f\n", Q_WTemp_new, Q_WTemp_mix, QxTout, QxTout_mix);
+//    	 printf("Q_incoming = %f, Q = %f\n", Q_incoming, Q);
+//     }
 
 //    if (itemID == 25014) printf("Q_WTemp_new = %f, QxTnew = %f, Q_incoming = %f, Q_m3 = %f, waterStorage = %f, waterStorageChange = %f, \n", Q_WTemp_new, QxTnew, Q_incoming, Q_incoming * 86400, waterStorage, waterStorageChange);
 //    if (itemID == 25014) printf("T_river = %f, T_runoff = %f, T_storage = %f\n", QxT/Q_incoming, RO_WTemp, StorexT/(waterStorage - waterStorageChange));
@@ -446,7 +451,7 @@ int MDWTempRiverRouteDef () {
   
 	if (_MDWTempRiverRouteID != MFUnset) return (_MDWTempRiverRouteID);
 
-	MFDefEntering ("Route river temperature",__FILE__);
+	MFDefEntering ("Route river temperature");
 	
 	if (((optStr = MFOptionGet (MDOptReservoirs))  == (char *) NULL) ||
        ((optID  = CMoptLookup ( options, optStr, true)) == CMfailed)) {
@@ -467,7 +472,7 @@ int MDWTempRiverRouteDef () {
        ((_MDInWTempRiverID           = MDWTempRiverDef    ()) == CMfailed) ||
        ((_MDInRiverWidthID           = MDRiverWidthDef    ()) == CMfailed) ||
        ((_MDInRunoffVolumeID         = MDRunoffVolumeDef  ()) == CMfailed) ||
-       ((_MDInWdl_QxTID	             = MDThermalInputsDef ()) == CMfailed) ||	//RJS 072011
+ //      ((_MDInWdl_QxTID	             = MDThermalInputsDef ()) == CMfailed) ||	//RJS 072011	// commented out 013112
        ((_MDInDischargeIncomingID    = MFVarGetID (MDVarDischarge0,             "m3/s",       MFInput,  MFFlux,  MFBoundary)) == CMfailed) ||
        ((_MDInWindSpeedID            = MFVarGetID (MDVarWindSpeed,              "m/s",        MFInput,  MFState, MFBoundary)) == CMfailed) ||
        ((_MDInAirTemperatureID       = MFVarGetID (MDVarAirTemperature,         "degC",       MFInput,  MFState, MFBoundary)) == CMfailed) ||
@@ -475,8 +480,8 @@ int MDWTempRiverRouteDef () {
        ((_MDInRiverStorageChgID      = MFVarGetID (MDVarRiverStorageChg,        "m3/s",       MFInput,  MFState, MFBoundary)) == CMfailed) ||
        ((_MDInRiverStorageID         = MFVarGetID (MDVarRiverStorage,           "m3",         MFInput,  MFState, MFInitial))  == CMfailed) ||
        ((_MDInSnowPackID             = MFVarGetID (MDVarSnowPack,               "mm",         MFInput,  MFState, MFBoundary)) == CMfailed) ||
-       ((_MDInWarmingTempID	       = MFVarGetID (MDVarWarmingTemp,		        "degC",	    MFInput,  MFState, MFBoundary)) == CMfailed) ||	//RJS 072011
-       ((_MDInThermalWdlID           = MFVarGetID (MDVarThermalWdl, 		        "-",          MFInput,  MFState, MFBoundary)) == CMfailed) ||	//RJS 072011
+//       ((_MDInWarmingTempID	       = MFVarGetID (MDVarWarmingTemp,		        "degC",	    MFInput,  MFState, MFBoundary)) == CMfailed) ||	//RJS 072011		//commented out 013112
+//       ((_MDInThermalWdlID           = MFVarGetID (MDVarThermalWdl, 		        "-",          MFInput,  MFState, MFBoundary)) == CMfailed) ||	//RJS 072011	//commented out 013112
        // output
        ((_MDLocalIn_QxTID            = MFVarGetID (MDVarBgcLocalIn_QxT,         "m3*degC/d", MFOutput, MFFlux,  MFBoundary)) == CMfailed)   ||
        ((_MDRemoval_QxTID            = MFVarGetID (MDVarRemoval_QxT,            "m3*degC/d", MFOutput, MFFlux,  MFBoundary)) == CMfailed)   ||
@@ -492,6 +497,6 @@ int MDWTempRiverRouteDef () {
        ((_MDWTempMixing_QxTID        = MFVarGetID (MDVarWTempMixing_QxT,        "degC",      MFOutput, MFState, MFBoundary)) == CMfailed)   ||
        (MFModelAddFunction (_MDWTempRiverRoute) == CMfailed)) return (CMfailed);
       
-	   MFDefLeaving ("Route river temperature",__FILE__);
+	   MFDefLeaving ("Route river temperature");
 	   return (_MDWTemp_QxTID);
 }

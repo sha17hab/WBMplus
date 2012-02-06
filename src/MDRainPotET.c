@@ -27,7 +27,7 @@ int MDRainPotETDef () {
 	if (_MDPotETID != MFUnset) return (_MDPotETID);
 
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
-	MFDefEntering ("Rainfed Potential Evapotranspiration",__FILE__);
+	MFDefEntering ("Rainfed Potential Evapotranspiration");
 
 	switch (optID) {
 		case MDinput:    _MDPotETID = MFVarGetID (MDVarRainPotEvapotrans, "mm", MFInput, MFFlux, false); break;
@@ -42,6 +42,6 @@ int MDRainPotETDef () {
 		case MDTurc:     _MDPotETID = MDRainPotETTurcDef     (); break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Rainfed Potential Evapotranspiration",__FILE__);
+	MFDefLeaving ("Rainfed Potential Evapotranspiration");
 	return (_MDPotETID);
 }

@@ -115,7 +115,7 @@ int MDReservoirDef () {
  
 	if ((optID == MDnone) || (_MDOutResReleaseID != MFUnset)) return (_MDOutResReleaseID);
 
-	MFDefEntering ("Reservoirs",__FILE__);
+	MFDefEntering ("Reservoirs");
 	switch (optID) {
 		case MDcalculate:
 			if (((_MDInDischMeanID      = MDDischMeanDef ())   == CMfailed) ||
@@ -128,6 +128,6 @@ int MDReservoirDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Reservoirs",__FILE__);
+	MFDefLeaving ("Reservoirs");
 	return (_MDOutResReleaseID); 
 }

@@ -255,7 +255,7 @@ int MDBgcDOCRoutingDef () {
 
 	if (_MDFlux_DOCID != MFUnset)	return (_MDFlux_DOCID);
 
-	MFDefEntering ("DOC Routing Calculation",__FILE__);
+	MFDefEntering ("DOC Routing Calculation");
 	if (((optStr = MFOptionGet (MDOptReservoirs))  == (char *) NULL) || ((optID = CMoptLookup ( options, optStr, true)) == CMfailed)) {
 						CMmsgPrint(CMmsgUsrError,"Reservoir Option not specified! Option none or calculate \n");
 						return CMfailed;
@@ -299,6 +299,6 @@ int MDBgcDOCRoutingDef () {
         ((_MDFluxMixing_DOCID         = MFVarGetID (MDVarDOCFlux_Mixing ,         "kg/day", MFRoute,  MFFlux,  MFBoundary)) == CMfailed) ||
         (MFModelAddFunction (_MDDOCRouting) == CMfailed)) return (CMfailed); 
 
-	MFDefLeaving ("DOC Routing Calculation",__FILE__);
+	MFDefLeaving ("DOC Routing Calculation");
 	return (_MDFlux_DOCID); 
 }

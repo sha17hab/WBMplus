@@ -91,7 +91,7 @@ int MDWTempGrdWaterDef () {
 
 	if (_MDOutWTempGrdWaterID != MFUnset) return (_MDOutWTempGrdWaterID);
 
-	MFDefEntering ("Groundwater temperature",__FILE__);
+	MFDefEntering ("Groundwater temperature");
 
 	if (((_MDInWTempSurfRunoffID = MDWTempSurfRunoffDef ()) == CMfailed) ||
 	    ((_MDInRainRechargeID    = MDRainInfiltrationDef ()) == CMfailed) ||
@@ -101,6 +101,6 @@ int MDWTempGrdWaterDef () {
 	    ((_MDOutWTempGrdWaterID  = MFVarGetID (MDVarWTempGrdWater, "degC", MFOutput, MFState,  MFInitial)) == CMfailed) ||
 	    (MFModelAddFunction (_MDWTempGrdWater) == CMfailed)) return (CMfailed);
 
-	MFDefLeaving ("Groundwater temperature",__FILE__);
+	MFDefLeaving ("Groundwater temperature");
 	return (_MDOutWTempGrdWaterID);
 }

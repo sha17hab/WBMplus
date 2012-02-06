@@ -103,7 +103,7 @@ static void _MDSPackChg (int itemID) {
 int MDSPackChgDef () {
 
 	if (_MDOutSPackChgID != MFUnset) return (_MDOutSPackChgID);
-	MFDefEntering ("Snow Pack Change",__FILE__);
+	MFDefEntering ("Snow Pack Change");
 	const char *optStr;
 	const char *soilTemperatureOptions [] = { "none", "calculate", (char *) NULL };
 	int soilTemperatureID;
@@ -133,7 +133,7 @@ int MDSPackChgDef () {
 	    ((_MDOutSnowPackID    = MFVarGetID (MDVarSnowPack,       "mm",   MFOutput, MFState, MFInitial))  == CMfailed) ||
 	    ((_MDOutSPackChgID    = MFVarGetID (MDVarSnowPackChange, "mm",   MFOutput, MFFlux,  MFBoundary)) == CMfailed) ||
 	    (MFModelAddFunction (_MDSPackChg) == CMfailed)) return (CMfailed);
-	MFDefLeaving ("Snow Pack Change",__FILE__);
+	MFDefLeaving ("Snow Pack Change");
 	return (_MDOutSPackChgID);
 }
 

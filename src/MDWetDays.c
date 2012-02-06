@@ -60,7 +60,7 @@ int MDWetDaysDef ()
 
 	if (_MDOutWetDaysID != MFUnset) return (_MDOutWetDaysID);
 
-	MFDefEntering ("Wet Days",__FILE__);
+	MFDefEntering ("Wet Days");
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
 
 	switch (optID)
@@ -75,6 +75,6 @@ int MDWetDaysDef ()
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 		}
-	MFDefLeaving ("Wet Days",__FILE__);
+	MFDefLeaving ("Wet Days");
 	return (_MDOutWetDaysID);
 	}

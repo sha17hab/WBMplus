@@ -155,7 +155,7 @@ static void _MDRainPotETSWGday (int itemID) {
 int MDRainPotETSWGdayDef () {
 	if (_MDOutPetID != MFUnset) return (_MDOutPetID);
 
-	MFDefEntering ("Rainfed Potential Evapotranspiration (Shuttleworth - Wallace [day])",__FILE__);
+	MFDefEntering ("Rainfed Potential Evapotranspiration (Shuttleworth - Wallace [day])");
 	if (((_MDInDayLengthID     = MDSRadDayLengthDef ()) == CMfailed) ||
 	    ((_MDInI0HDayID        = MDSRadI0HDayDef    ()) == CMfailed) ||
 	    ((_MDInCParamAlbedoID  = MDCParamAlbedoDef  ()) == CMfailed) ||
@@ -176,6 +176,6 @@ int MDRainPotETSWGdayDef () {
 	    ((_MDInWSpeedID  = MFVarGetID (MDVarWindSpeed,      "m/s",   MFInput,  MFState, MFBoundary)) == CMfailed) ||
 	    ((_MDOutPetID    = MFVarGetID (MDVarRainPotEvapotrans,  "mm",    MFOutput, MFFlux,  MFBoundary)) == CMfailed) ||
 	    (MFModelAddFunction (_MDRainPotETSWGday) == CMfailed)) return (CMfailed);
-	MFDefLeaving  ("Rainfed Potential Evapotranspiration (Shuttleworth - Wallace [day])",__FILE__);
+	MFDefLeaving  ("Rainfed Potential Evapotranspiration (Shuttleworth - Wallace [day])");
 	return(_MDOutPetID);
 }

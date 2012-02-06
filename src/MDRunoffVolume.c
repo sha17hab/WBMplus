@@ -38,7 +38,7 @@ int MDRunoffVolumeDef () {
 
 	if (_MDOutRunoffVolumeID != MFUnset) return (_MDOutRunoffVolumeID);
 
-	MFDefEntering ("Runoff Volume",__FILE__);
+	MFDefEntering ("Runoff Volume");
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options, optStr, true);
 	switch (optID) {
 		case MDinput:
@@ -51,6 +51,6 @@ int MDRunoffVolumeDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving  ("Runoff Volume",__FILE__);
+	MFDefLeaving  ("Runoff Volume");
 	return (_MDOutRunoffVolumeID);
 }

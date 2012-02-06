@@ -46,7 +46,7 @@ int MDRunoffDef () {
 
 	if (_MDOutRunoffID != MFUnset) return (_MDOutRunoffID);
 
-	MFDefEntering ("Runoff",__FILE__);
+	MFDefEntering ("Runoff");
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options, optStr, true);
 	switch (optID) {
 		case MDinput: _MDOutRunoffID = MFVarGetID (MDVarRunoff,         "mm",     MFInput,  MFFlux, MFBoundary); break;
@@ -61,6 +61,6 @@ int MDRunoffDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving  ("Runoff",__FILE__);
+	MFDefLeaving  ("Runoff");
 	return (_MDOutRunoffID);
 }

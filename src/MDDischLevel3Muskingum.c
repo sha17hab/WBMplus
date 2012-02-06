@@ -75,7 +75,7 @@ int MDDischLevel3MuskingumDef () {
 
 	if (_MDOutDischLevel3ID != MFUnset) return (_MDOutDischLevel3ID);
 
-	MFDefEntering ("Discharge Muskingum",__FILE__);
+	MFDefEntering ("Discharge Muskingum");
 
 	if (((_MDInRunoffVolumeID  = MDRunoffVolumeDef ()) == CMfailed) ||
 	    ((_MDInMuskingumC0ID   = MDDischLevel3MuskingumCoeffDef ()) == CMfailed) ||
@@ -88,7 +88,7 @@ int MDDischLevel3MuskingumDef () {
 	    ((_MDOutRiverStorChgID = MFVarGetID (MDVarRiverStorageChg,  "m3",     MFOutput, MFFlux,  MFBoundary)) == CMfailed) ||
 	    ((_MDOutRiverStorageID = MFVarGetID (MDVarRiverStorage,     "m3",     MFOutput, MFState, MFInitial))  == CMfailed) ||
 	    (MFModelAddFunction(_MDDischLevel3Muskingum) == CMfailed)) return (CMfailed);
-	MFDefLeaving ("Discharge Muskingum",__FILE__);
+	MFDefLeaving ("Discharge Muskingum");
 	return (_MDOutDischLevel3ID);
 }
 

@@ -67,7 +67,7 @@ int MDRainInfiltrationDef () {
 					}
 		
 	
-	MFDefEntering ("Rainfed Infiltration",__FILE__);
+	MFDefEntering ("Rainfed Infiltration");
 	 
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options, optStr, true);
 	
@@ -85,7 +85,7 @@ int MDRainInfiltrationDef () {
 		
 		
 		if (MFModelAddFunction (_MDRainInfiltrationSaturation) == CMfailed) return CMfailed;
-		MFDefLeaving  ("Rainfed Infiltration",__FILE__);
+		MFDefLeaving  ("Rainfed Infiltration");
 		return (_MDOutRainInfiltrationID);
 
 	}
@@ -113,7 +113,7 @@ int MDRainInfiltrationDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving  ("Rainfed Infiltration",__FILE__);
+	MFDefLeaving  ("Rainfed Infiltration");
 	return (_MDOutRainInfiltrationID);
 Stop:
 	MFOptionMessage (optName, optStr, options);

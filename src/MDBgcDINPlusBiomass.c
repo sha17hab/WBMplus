@@ -313,7 +313,7 @@ int MDBgcDINPlusBiomassRoutingDef () {
 
 	if (_MDFlux_DINID != MFUnset)	return (_MDFlux_DINID);
 
-	MFDefEntering ("DINPLUSBIOMASS Routing Calculation",__FILE__);
+	MFDefEntering ("DINPLUSBIOMASS Routing Calculation");
 	if (((optStr = MFOptionGet (MDOptReservoirs))  == (char *) NULL) || ((optID = CMoptLookup ( options, optStr, true)) == CMfailed)) {
 						CMmsgPrint(CMmsgUsrError,"Reservoir Option not specified! Option none or calculate \n");
 						return CMfailed;
@@ -361,6 +361,6 @@ int MDBgcDINPlusBiomassRoutingDef () {
         ((_MDFluxMixing_DINID         = MFVarGetID (MDVarDINFlux_Mixing ,            "kg/day", MFRoute,  MFFlux,  MFBoundary))  == CMfailed) ||
         (MFModelAddFunction (_MDDINPLUSBIOMASSRouting) == CMfailed)) return (CMfailed); 
 
-	MFDefLeaving ("DINPLUSBIOMASS Routing Calculation",__FILE__);
+	MFDefLeaving ("DINPLUSBIOMASS Routing Calculation");
 	return (_MDFlux_DINID); 
 }

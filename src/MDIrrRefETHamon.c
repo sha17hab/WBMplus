@@ -41,11 +41,11 @@ static void _MDIrrRefEvapotransHamon (int itemID) {
 int MDIrrRefEvapotransHamonDef () {
 	if (_MDOutPetID != MFUnset) return (_MDOutPetID);
 
-	MFDefEntering ("Hamon as ReferenceETP",__FILE__);
+	MFDefEntering ("Hamon as ReferenceETP");
 	if (((_MDInDayLengthID = MDSRadDayLengthDef ()) == CMfailed) ||
 	    ((_MDInAtMeanID    = MFVarGetID (MDVarAirTemperature,   "degC", MFInput,  MFState, MFBoundary)) == CMfailed) ||
 	    ((_MDOutPetID      = MFVarGetID (MDVarIrrRefEvapotrans, "mm",   MFOutput, MFFlux,  MFBoundary)) == CMfailed) ||
 	    (MFModelAddFunction (_MDIrrRefEvapotransHamon) == CMfailed)) return (CMfailed);
-	MFDefLeaving ("Hamon as ReferenceETP",__FILE__);
+	MFDefLeaving ("Hamon as ReferenceETP");
 	return (_MDOutPetID);
 }

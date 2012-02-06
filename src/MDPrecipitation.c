@@ -91,7 +91,7 @@ int MDPrecipitationDef ()
 
 	if (_MDOutPrecipID != MFUnset) return (_MDOutPrecipID);
 
-	MFDefEntering ("Precipitation",__FILE__);
+	MFDefEntering ("Precipitation");
 	
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
  
@@ -114,6 +114,6 @@ int MDPrecipitationDef ()
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 		}
-	MFDefLeaving ("Precipitation",__FILE__);
+	MFDefLeaving ("Precipitation");
 	return (_MDOutPrecipID);
 	}

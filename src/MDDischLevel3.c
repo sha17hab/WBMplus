@@ -26,7 +26,7 @@ int MDDischLevel3Def() {
 
 	if (_MDDischLevel3ID != MFUnset) return (_MDDischLevel3ID);
 
-	MFDefEntering ("Discharge Level 3",__FILE__);
+	MFDefEntering ("Discharge Level 3");
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options,optStr,true);
 
 	switch (optID) {
@@ -36,6 +36,6 @@ int MDDischLevel3Def() {
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
 	if (_MDDischLevel3ID == CMfailed) return (CMfailed);
-	MFDefLeaving ("Discharge Level 3",__FILE__);
+	MFDefLeaving ("Discharge Level 3");
 	return (_MDDischLevel3ID);
 }

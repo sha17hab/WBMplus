@@ -40,7 +40,7 @@ int MDRunoffMeanDef () {
 	const char *options [] = { MDInputStr, MDCalculateStr, (char *) NULL };
 
 	if (_MDOutRunoffMeanID != MFUnset) return (_MDOutRunoffMeanID);
-	MFDefEntering ("Runoff Mean",__FILE__);
+	MFDefEntering ("Runoff Mean");
 
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options, optStr, true);
 
@@ -54,6 +54,6 @@ int MDRunoffMeanDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Runoff Mean",__FILE__);
+	MFDefLeaving ("Runoff Mean");
 	return (_MDOutRunoffMeanID);
 }

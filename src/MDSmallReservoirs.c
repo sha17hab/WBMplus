@@ -127,7 +127,7 @@ int MDSmallReservoirReleaseDef () {
 	if ((_MDInSmallResCapacityID = MDSmallReservoirCapacityDef ()) == CMfailed) return (CMfailed);
 	if  (_MDInSmallResCapacityID == MFUnset) return (MFUnset);
 
-	MFDefEntering("Small Reservoirs",__FILE__);
+	MFDefEntering("Small Reservoirs");
     if (((_MDInRainSurfRunoffID      = MDRainSurfRunoffDef   ()) == CMfailed) ||
     	((_MDInIrrAreaFracID         = MDIrrigatedAreaDef    ()) == CMfailed) ||
         ((_MDInPotEvapotransID       = MDIrrRefEvapotransDef ()) == CMfailed) ||
@@ -139,7 +139,7 @@ int MDSmallReservoirReleaseDef () {
         ((_MDOutSmallResEvapoID      = MFVarGetID (MDVarSmallResEvaporation,       "mm", MFOutput, MFFlux,  MFBoundary)) == CMfailed) ||
         ((_MDOutSmallResStorageChgID = MFVarGetID (MDVarSmallResStorageChange,     "mm", MFOutput, MFState, MFBoundary)) == CMfailed) ||
         ((MFModelAddFunction (_MDSmallReservoirRelease) == CMfailed))) return (CMfailed);
-	MFDefLeaving("Small Reservoirs",__FILE__);
+	MFDefLeaving("Small Reservoirs");
 	return (_MDOutSmallResReleaseID);
 }
 

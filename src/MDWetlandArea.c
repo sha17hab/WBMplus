@@ -32,7 +32,7 @@ int MDWetlandAreaDef (){
     if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options, optStr, true);
 	if ((optID == MDnone) || (_MDWetlandAreaFracID != MFUnset)) return (_MDWetlandAreaFracID);
 
-	MFDefEntering ("WetlandArea",__FILE__);
+	MFDefEntering ("WetlandArea");
 //	printf ("Wetland Area optID  =%i  \n",optID);
 	if (_MDWetlandAreaFracID != MFUnset) return (_MDWetlandAreaFracID);
 	switch (optID) {
@@ -46,7 +46,7 @@ int MDWetlandAreaDef (){
 					break;
 				default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-		MFDefLeaving("WetlandArea",__FILE__);
+		MFDefLeaving("WetlandArea");
 	return (_MDWetlandAreaFracID);
 	
 }

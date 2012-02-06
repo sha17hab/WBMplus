@@ -129,7 +129,7 @@ int MDBgcRiverGPPDef () {
 
 	if (_MDRiverGPPID != MFUnset) return (_MDRiverGPPID);
 
-	MFDefEntering ("Calculate river GPP",__FILE__);
+	MFDefEntering ("Calculate river GPP");
 	
 	if (((optStr = MFOptionGet (MDOptReservoirs))  == (char *) NULL) || ((optID = CMoptLookup ( options, optStr, true)) == CMfailed)) {
 				CMmsgPrint(CMmsgUsrError,"Reservoir Option not specified! Option none or calculate \n");
@@ -164,6 +164,6 @@ int MDBgcRiverGPPDef () {
 
        (MFModelAddFunction (_MDRiverGPP) == CMfailed)) return (CMfailed);
       
-	   MFDefLeaving ("Calculate river GPP",__FILE__);
+	   MFDefLeaving ("Calculate river GPP");
 	   return (_MDRiverGPPID);
 }

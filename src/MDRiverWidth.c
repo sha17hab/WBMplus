@@ -68,7 +68,7 @@ int MDRiverWidthDef () {
 
 	if (_MDOutRiverWidthID != MFUnset) return (_MDOutRiverWidthID);
 
-	MFDefEntering ("River Geometry",__FILE__);
+	MFDefEntering ("River Geometry");
 
 	if (((_MDInDischargeID             = MDDischargeDef ())             == CMfailed) ||
 	    ((_MDInRiverbedShapeExponentID = MDRiverbedShapeExponentDef ()) == CMfailed) ||
@@ -78,7 +78,7 @@ int MDRiverWidthDef () {
 	    ((_MDOutRiverDepthID           = MFVarGetID (MDVarRiverDepth,            "m",      MFOutput, MFState, MFBoundary)) == CMfailed) ||
         ((_MDOutRiverWidthID           = MFVarGetID (MDVarRiverWidth,            "m",      MFOutput, MFState, MFBoundary)) == CMfailed) ||
 	    (MFModelAddFunction (_MDRiverWidth) == CMfailed)) return (CMfailed);
-	MFDefLeaving ("River Geometry",__FILE__);
+	MFDefLeaving ("River Geometry");
 
 	return (_MDOutRiverWidthID);
 }

@@ -90,7 +90,7 @@ static void _MDRainPotETPstd (int itemID) {
 int MDRainPotETPstdDef () {
 	if (_MDOutPetID != MFUnset) return (_MDOutPetID);
 
-	MFDefEntering ("Rainfed Potential Evapotranspiration (Penman Standard)",__FILE__);
+	MFDefEntering ("Rainfed Potential Evapotranspiration (Penman Standard)");
 	if (((_MDInDayLengthID     = MDSRadDayLengthDef ()) == CMfailed) ||
 	    ((_MDInI0HDayID        = MDSRadI0HDayDef    ()) == CMfailed) ||
 	    ((_MDInCParamAlbedoID  = MDCParamAlbedoDef  ()) == CMfailed) ||
@@ -100,6 +100,6 @@ int MDRainPotETPstdDef () {
 	    ((_MDInWSpeedID  = MFVarGetID (MDVarWindSpeed,      "m/s",   MFInput,  MFState, MFBoundary)) == CMfailed) ||
 	    ((_MDOutPetID    = MFVarGetID (MDVarRainPotEvapotrans,  "mm",    MFOutput, MFFlux,  MFBoundary)) == CMfailed) ||
 	    (MFModelAddFunction (_MDRainPotETPstd) == CMfailed)) return (CMfailed);
-	MFDefLeaving  ("Rainfed Potential Evapotranspiration (Penman Standard)",__FILE__);
+	MFDefLeaving  ("Rainfed Potential Evapotranspiration (Penman Standard)");
 	return (_MDOutPetID);
 }

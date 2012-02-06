@@ -68,10 +68,10 @@ static void _MDSRadDayLength (int itemID) {
 int MDSRadDayLengthDef () {
 	if (_MDOutSRadDayLengthID != MFUnset) return (_MDOutSRadDayLengthID);
 
-	MFDefEntering ("Day length",__FILE__);
+	MFDefEntering ("Day length");
 	if (((_MDOutSRadDayLengthID   = MFVarGetID (MDVarSRadDayLength, "1/d", MFOutput, MFState, false)) == CMfailed) ||
 	    (MFModelAddFunction (_MDSRadDayLength) == CMfailed)) return (CMfailed);
-	MFDefLeaving ("Day length",__FILE__);
+	MFDefLeaving ("Day length");
 	return (_MDOutSRadDayLengthID);
 }
 
@@ -103,10 +103,10 @@ static void _MDSRadI0HDay (int itemID) {
 int MDSRadI0HDayDef () {
 	if (_MDOutSRadI0HDayID != MFUnset) return (_MDOutSRadI0HDayID);
 
-	MFDefEntering ("I0H Day",__FILE__);
+	MFDefEntering ("I0H Day");
 	if (((_MDOutSRadI0HDayID   = MFVarGetID (MDVarSRadI0HDay, "MJ/m2", MFOutput, MFState, false)) == CMfailed) ||
 	    (MFModelAddFunction (_MDSRadI0HDay) == CMfailed)) return (CMfailed);
-	MFDefLeaving ("I0H Day",__FILE__);
+	MFDefLeaving ("I0H Day");
 	return (_MDOutSRadI0HDayID);
 }
 
@@ -153,7 +153,7 @@ int MDSolarRadDef () {
 
 	if (_MDOutSolarRadID != MFUnset) return (_MDOutSolarRadID);
 
-	MFDefEntering ("Solar Radiation",__FILE__);
+	MFDefEntering ("Solar Radiation");
 	if ((optStr = MFOptionGet (optName)) != (char *) NULL) optID = CMoptLookup (options, optStr, true);
 
 	switch (optID) {
@@ -173,6 +173,6 @@ int MDSolarRadDef () {
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
-	MFDefLeaving ("Solar Radiation",__FILE__);
+	MFDefLeaving ("Solar Radiation");
 	return (_MDOutSolarRadID);
 }
