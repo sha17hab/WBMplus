@@ -89,6 +89,11 @@ OBJS = $(OBJ)/WBMMain.o\
        $(OBJ)/MDWTempGrdWater.o\
        $(OBJ)/MDWTempSurfRunoff.o\
        $(OBJ)/MDThermalInputs.o
+	   $(OBJ)/MDBQARTpreprocess.o\
+	   $(OBJ)/hydroran2.o\
+	   $(OBJ)/MDBedloadFlux.o\
+	   $(OBJ)/MDBankfullQcalc.o\
+	   $(OBJ)/MDDischarge_w_overbank.o\
 
 all: ${TARGET}
 

@@ -24,6 +24,8 @@ extern "C" {
 
 // Options
 #define MDOptDischarge                       "Discharge"
+#define MDOptSedimentFlux                    "SedimentFlux" //new !!!!!! (S.C)
+
 #define MDOptIrrigation                      "Irrigation"
 #define MDOptModel                           "Model"
 #define MDOptReservoirs                      "Reservoirs"
@@ -53,7 +55,13 @@ extern "C" {
 #define MDVarAirTemperature                  "AirTemperature"
 #define MDVarAirTempMinimum                  "AirTempMinimum"
 #define MDVarAirTempMaximum                  "AirTempMaximum"
+#define MDVarAirTemperatureAcc		"AirTempAcc"
+#define MDVarAirTemperatureAcc_space		"AirTempAcc_space"
+#define MDVarAirTemperatureAcc_time		"AirTempAcc_time"
+#define MDVarNewAirTemperatureAcc_time		"NewAirTempAcc_time"
 #define MDVarAvgNSteps                       "AverageNSteps"
+#define MDVarContributingArea                       "ContributingArea"
+#define MDVarContributingAreaAcc                       "ContributingAreaAcc"
 
 #define MDVarBaseFlow                        "BaseFlow"
 #define MDVarBGCNonPoint_NO3                 "NinputsNO3_nonpoint"
@@ -100,6 +108,12 @@ extern "C" {
 #define MDVarDischarge1                      "Discharge1"
 #define MDVarDischObserved                   "DischargeObserved"
 #define MDVarDischMean                       "DischargeMean"
+#define MDVarDischargeAcc	"DischargeAcc"
+#define MDVarNewDischargeAcc	"NewDischargeAcc"
+#define MDVarOverBankQ	"OverBankQ"
+
+#define MDVarElevationMax              "MaxElevation"
+#define MDVarElevation              "Elevation"
 
 #define MDVarEvapotranspiration              "Evapotranspiration"
 #define MDVarFuelType1						 "FuelType1"			//RJS 013012
@@ -116,6 +130,8 @@ extern "C" {
 #define MDVarGroundWaterRecharge             "GroundWaterRecharge"
 #define MDVarGroundWaterUptake               "GroundWaterUptake"
 #define MDVarLeafAreaIndex                   "LeafAreaIndex"
+
+#define MDVarIceCover			"IceCover"
 
 #define MDVarIrrAreaFraction                 "IrrigatedAreaFraction"
 
@@ -213,6 +229,7 @@ extern "C" {
 #define MDVarReservoirRelease                "ReservoirRelease"
 #define MDVarReservoirStorage                "ReservoirStorage" 
 #define MDVarReservoirStorageChange          "ReservoirStorageChange"
+#define MDVarRelief                "ReliefMax"
 
 #define MDVarRelHumidity                     "RelativeHumidity"
 #define MDVarRelSoilMoisture                 "RelativeSoilMoisture"	
@@ -222,6 +239,7 @@ extern "C" {
 #define MDVarRiverbedWidthMean               "RiverbedWidthMean"
 
 #define MDVarRiverbedVelocityMean            "RiverbedVelocityMean"
+#define MDVarRiverbedReachLength	     "RiverbedReachLength"
 #define MDVarRiverDepth                      "RiverDepth"
 #define MDVarRiverStorage                    "RiverStorage"
 #define MDVarRiverStorageChg                 "RiverStorageChange"
@@ -233,6 +251,55 @@ extern "C" {
 #define MDVarRunoffVolume                    "RunoffVolume"
 
 #define MDVarRunofftoPerv					 "RunoffToPerv"	//RJS 042010
+
+#define MDVarSedimentFlux		     "SedimentFlux"
+#define MDVarBedloadFlux		     "BedloadFlux"
+
+#define MDVarSedimentAcc		"SedimentAcc"	
+#define MDVarNewSedimentAcc		"NewSedimentAcc"	
+#define MDVarBQART_A			     "BQART_A"
+#define MDVarBQART_B	     	     "BQART_B"
+#define MDVarQbar	     	     "Qbar"
+#define MDVarBQART_Qbar_km3y	"BQART_Qbar_km3y"
+#define MDVarBQART_Qbar_m3s	"BQART_Qbar_m3s"
+#define MDVarBQART_R	     	     "BQART_R"
+#define MDVarBQART_T	     	     "BQART_T"
+#define MDVarBQART_Lithology	     "BQART_Lithology"
+#define MDVarBQART_GNP	     	     "BQART_GNP"
+#define MDVarPopulation	     	     "Population"
+#define MDVarLithologyAreaAcc	"LithologyAreaAcc"
+#define MDVarLithologyMean	"LithologyMean"
+#define MDVarPopulationAcc	"PopulationAcc"
+#define MDVarPopulationDensity  "PopulationDensity"
+#define MDVarNumPixels	 	"NumPixels"
+#define MDVarGNPAreaAcc		"GNPAreaAcc"
+#define MDVarMeanGNP		"MeanGNP"
+#define MDVarBQART_Eh		"BQART_Eh"
+#define MDVarBQART_Te		"BQART_Te"
+#define MDVarTeAacc		"TeAacc"
+#define MDVarResStorageAcc	"ResStorageAcc"
+#define MDVarBQART_Te		"BQART_Te"
+#define MDVarQs_bar		"Qs_bar"
+#define MDVarrnseed		"rnseed"
+#define MDVarMinSlope		"Slope-Min"
+#define MDVarPsi		"Psi"
+#define MDVarC			"C"
+#define MDVarUpStreamQb		"UpStreamQb"
+#define MDDeltaBedload		"DeltaBedload"
+#define MDVarUpStreamQs		"UpStreamQs"
+#define MDDeltaQs		"DeltaQs"
+
+#define MDVarBankfullQ		"BankfullQ"	
+#define MDVarBankfullQ2		"BankfullQ2"
+#define MDVarBankfullQ5		"BankfullQ5"
+#define MDVarBankfullQ10	"BankfullQ10"
+#define MDVarBankfullQ25		"BankfullQ25"
+#define MDVarBankfullQ50		"BankfullQ50"
+#define MDVarBankfullQ100		"BankfullQ100"
+#define MDVarBankfullQ200		"BankfullQ200"
+#define MDVarBankfull_Qn		"Bankfull_Qn"
+#define MDVarFlowCoefficient		"FlowCoefficient"
+
 
 #define MDVarSAGEVegCover                    "SAGEVegCover"
 #define MDVarSmallReservoirStorageFrac       "SmallReservoirStorageFraction"	
@@ -260,6 +327,9 @@ extern "C" {
 #define MDVarTransferEffSep					 "TransferEffSep"	//RJS 061511
 
 #define MDVarThermalWdl						 "ThermalWdl"		//RJS 081711
+
+#define MDVarTimeSteps			"TimeSteps"
+#define MDVarNewTimeSteps		"NewTimeSteps"
 
 #define MDVarLakeArea                        "LakeArea" // TODO I think this is Wil's addition but not used yet
 #define MDVarReservoirArea                   "ReservoirArea" // TODO I think this is Wil's addition but not used yet
@@ -441,6 +511,10 @@ int MDBgcDINRoutingDef();
 int MDBgcDINPlusBiomassRoutingDef();
 int MDBgcRiverLightDef();
 int MDBgcRiverGPPDef(); // TODO Not Used!
+int MDBQARTinputsDef(); //NEW !!!!!  (S.C)
+int MDBQARTpreprocessDef(); //NEW !!!!!  (S.C)
+int MDBedloadFluxDef();//NEW !!!!!  (S.C)
+int MDBankfullQcalcDef();//NEW !!!!!  (S.C)
 
 int MDCParamAlbedoDef();
 int MDCParamCHeightDef();
@@ -453,6 +527,7 @@ int MDCParamGLMaxDef();
 int MDCParamLPMaxDef();
 int MDCParamZ0gDef();
 int MDDischargeDef();
+int MDDischargeBFDef();
 int MDDischLevel1Def();
 int MDDischLevel2Def();
 int MDDischLevel3Def();
@@ -499,6 +574,7 @@ int MDRiverWidthDef();
 int MDRunoffDef();
 int MDRunoffMeanDef();
 int MDRunoffVolumeDef();
+int MDSedimentFluxDef(); //NEW !!!!!  (S.C)
 int MDSPackChgDef();
 int MDSPackMeltDef();
 int MDSmallReservoirReleaseDef();
@@ -549,6 +625,7 @@ float MDPETlibGroundResistance(float, float, float, float, float, float, float);
 float MDPETlibPenmanMontieth(float, float, float, float, float);
 float MDPETlibShuttleworthWallace(float, float, float, float, float, float,
 		float, float, float);
+float hydroran2(long *idum);
 
 #if defined(__cplusplus)
 }
