@@ -89,6 +89,7 @@ OBJS = $(OBJ)/WBMMain.o\
        $(OBJ)/MDWTempGrdWater.o\
        $(OBJ)/MDWTempSurfRunoff.o\
        $(OBJ)/MDThermalInputs.o\
+       $(OBJ)/MDSedimentFlux.o\
 	   $(OBJ)/MDBQARTpreprocess.o\
 	   $(OBJ)/hydroran2.o\
 	   $(OBJ)/MDBedloadFlux.o\
