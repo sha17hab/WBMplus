@@ -1,2 +1,4 @@
 /bin/wbmplus.bin
 obj/
+*.swp
+*.swo
