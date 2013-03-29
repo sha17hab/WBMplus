@@ -104,7 +104,7 @@ static void _MDIrrGrossDemand (int itemID) {
 	int i;
 	float ReqpondingDepth ;
 	float pondingDepth;
-    float irrIntensity;
+        float irrIntensity;
 	float cropDepletionFactor;
 	float meanSMChange;
 	float meanSMoist;
