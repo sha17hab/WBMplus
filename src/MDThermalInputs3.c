@@ -244,6 +244,7 @@ float Eff_loss_2			= 0.0;		// RJS 121912
 float condenser_inlet		= 0.0;		// RJS 122112
 float energy_Pen			= 0.0;		// RJS 122112
 float year					= 0.0;		// RJS 122212
+float exp_adj				= 0.0;		// RJS 052013 experiment adjust
 
 
 
@@ -277,40 +278,98 @@ float year					= 0.0;		// RJS 122212
   //// Scenario 3, increased demand
 
   	// capacity change
-/*	if (Technology_1 > 4.00 && Technology_1 < 4.15)   NamePlate_1 = NamePlate_1 * 1.4626;			//
-  	if (Technology_1 > 4.16 && Technology_1 < 4.25)   NamePlate_1 = NamePlate_1 * 1.4626;			//
-  	if (Technology_1 > 4.26 && Technology_1 < 4.35)   NamePlate_1 = NamePlate_1 * 1.4626;			//
+//	if (Technology_1 > 4.00 && Technology_1 < 4.15)   NamePlate_1 = NamePlate_1 * 1.4626;			//
+//  	if (Technology_1 > 4.16 && Technology_1 < 4.25)   NamePlate_1 = NamePlate_1 * 1.4626;			//
+//  	if (Technology_1 > 4.26 && Technology_1 < 4.35)   NamePlate_1 = NamePlate_1 * 1.4626;			//
 
-	if (FuelType_1 == 2)   NamePlate_1 = NamePlate_1 * 0.7593;
-	if (FuelType_1 == 4)   NamePlate_1 = NamePlate_1 * 0.9779;
-	if (FuelType_1 == 5)   NamePlate_1 = NamePlate_1 * 0.7189;
+//	if (FuelType_1 == 2)   NamePlate_1 = NamePlate_1 * 0.7593;
+//	if (FuelType_1 == 4)   NamePlate_1 = NamePlate_1 * 0.9779;
+//	if (FuelType_1 == 5)   NamePlate_1 = NamePlate_1 * 0.7189;
 
 	// demand change
-	if (Technology_1 > 4.00 && Technology_1 < 4.15)   energyDemand_1 = energyDemand_1 * ((0.0116 * (year - 2000.0)) + 1.3275);			//
-	if (Technology_1 > 4.16 && Technology_1 < 4.25)   energyDemand_1 = energyDemand_1 * ((0.0116 * (year - 2000.0)) + 1.3275);			//
-	if (Technology_1 > 4.26 && Technology_1 < 4.35)   energyDemand_1 = energyDemand_1 * ((0.0116 * (year - 2000.0)) + 1.3275);			//
+//	if (Technology_1 > 4.00 && Technology_1 < 4.15)   energyDemand_1 = energyDemand_1 * ((0.0116 * (year - 2000.0)) + 1.3275);			//
+//	if (Technology_1 > 4.16 && Technology_1 < 4.25)   energyDemand_1 = energyDemand_1 * ((0.0116 * (year - 2000.0)) + 1.3275);			//
+//	if (Technology_1 > 4.26 && Technology_1 < 4.35)   energyDemand_1 = energyDemand_1 * ((0.0116 * (year - 2000.0)) + 1.3275);			//
 
-	if (FuelType_1 == 2)   energyDemand_1 = energyDemand_1 * ((0.0042 * (year - 2000.0)) + 0.9139);
-	if (FuelType_1 == 4)   energyDemand_1 = energyDemand_1 * ((0.0002 * (year - 2000.0)) + 0.9856);
-	if (FuelType_1 == 5)   energyDemand_1 = energyDemand_1 * ((-0.0039 * (year - 2000.0)) + 0.1296);
-*/
+//	if (FuelType_1 == 2)   energyDemand_1 = energyDemand_1 * ((0.0042 * (year - 2000.0)) + 0.9139);
+//	if (FuelType_1 == 4)   energyDemand_1 = energyDemand_1 * ((0.0002 * (year - 2000.0)) + 0.9856);
+//	if (FuelType_1 == 5)   energyDemand_1 = energyDemand_1 * ((-0.0039 * (year - 2000.0)) + 0.1296);
+
   //// End Scenario 3, increased demand
 
 /****************************************************/
 
   	//// Scenario 4, upgraded cooling
 
-  	if (Technology_1 == 1.0) {
-  		Technology_1 = 2.0;
-  	  	energy_Pen   = 0.02 * NamePlate_1;
-  	}
+//  	if (Technology_1 == 1.0) {
+// 		Technology_1 = 2.0;
+//  	  	energy_Pen   = 0.02 * NamePlate_1;
+// 	}
 
-  	if (Technology_1 == 4.1) {
-  		Technology_1 = 4.2;
-  		energy_Pen   = 0.005 * NamePlate_1;
-  	}
+//  	if (Technology_1 == 4.1) {
+//  		Technology_1 = 4.2;
+//  		energy_Pen   = 0.005 * NamePlate_1;
+//  	}
 
   //// End Scenario 4, upgraded cooling
+
+/***************************************************/
+
+  // NABS Scenario
+/*
+  	if (itemID == 34)  {
+  		NamePlate_1    = 600.0;
+  		energyDemand_1 = energyDemand_1 * 17.0;
+  	}
+
+  	if (itemID == 30)  {
+  		NamePlate_1    = 600.0;
+  		energyDemand_1 = energyDemand_1 * 17.0;
+  	}
+
+
+
+	if (itemID == 104) NamePlate_1 = 0.00;
+  	if (itemID == 379) NamePlate_1 = 0.00;
+ // 	if (itemID == 34)  NamePlate_1 = 0.00;
+ // 	if (itemID == 30)  NamePlate_1 = 0.00;
+  	if (itemID == 22)  NamePlate_1 = 0.00;
+  	if (itemID == 18)  NamePlate_1 = 0.00;
+  	if (itemID == 10)  NamePlate_1 = 0.00;
+  	if (itemID == 9)   NamePlate_1 = 0.00;
+  	if (itemID == 6)   NamePlate_1 = 0.01;
+  	if (itemID == 5)   NamePlate_1 = 0.01;
+  	if (itemID == 130) NamePlate_1 = 0.00;
+
+//  	if (itemID == 5)  {
+ // 		NamePlate_1    = 600.0;
+ // 		energyDemand_1 = energyDemand_1 * 17.0;
+ // 	}
+
+//  	if (itemID == 6)  {
+//  		NamePlate_1    = 600.0;
+//  		energyDemand_1 = energyDemand_1 * 17.0;
+ // 	}
+*/
+
+/***************************************************/
+
+// Experiment
+/*
+	if (State == 9) 	energyDemand_1 = 1.064 * energyDemand_1;	// CT	1x 1.353
+	if (State == 10) 	energyDemand_1 = 0.844 * energyDemand_1;	// DE	1x 0.893
+	if (State == 25) 	energyDemand_1 = 1.053 * energyDemand_1;	// MA	1x 1.752
+	if (State == 24) 	energyDemand_1 = 0.955 * energyDemand_1;	// MD	1x 1.053
+	if (State == 23) 	energyDemand_1 = 0.807 * energyDemand_1;	// ME	1x 1.386
+	if (State == 33) 	energyDemand_1 = 1.119 * energyDemand_1;	// NH	1x 1.234
+	if (State == 34) 	energyDemand_1 = 1.143 * energyDemand_1;	// NJ	1x 1.324
+	if (State == 36) 	energyDemand_1 = 1.594 * energyDemand_1;	// NY	1x 2.076
+	if (State == 42) 	energyDemand_1 = 1.058 * energyDemand_1;	// PA	1x 1.104
+	if (State == 44) 	energyDemand_1 = 1.087 * energyDemand_1;	// RI	1x 1.423
+	if (State == 7) 	energyDemand_1 = 1.259 * energyDemand_1;	// VA	1x 1.249
+	if (State == 4) 	energyDemand_1 = 1.218 * energyDemand_1;	// VT	1x 1.330
+	if (State == 11) 	energyDemand_1 = 1.000 * energyDemand_1;	// DC	1x 1.000
+*/
 
 /***************************************************/
 
@@ -1256,7 +1315,8 @@ float year					= 0.0;		// RJS 122212
 	totalDaily_output_1 	  = (output_1 * 24)	> energyDemand_1 ? energyDemand_1 : (output_1 * 24);		// total MWhrs per day
 	totalDaily_deficit_1	  = energyDemand_1 - totalDaily_output_1;		// energy deficit (MWhrs)
 	totalDaily_percent_1	  = energyDemand_1 > 0.0 ? totalDaily_output_1 / energyDemand_1 : 0.0; 		// percent of demand fulfilled
-	totalHours_run_1		  = totalDaily_output_1 /output_1;			// hrs of operation run
+//	totalHours_run_1		  = totalDaily_output_1 /output_1;			// hrs of operation run
+	totalHours_run_1		  = output_1 == 0.0 ? 0.0 : totalDaily_output_1 / output_1;			// hrs of operation run
 	totalDaily_wdl_1		  = wdl_1 * totalHours_run_1 * 3600;			// total wdl in m3 per day
 	totalDaily_target_wdl_1	  = wdl_1 * (energyDemand_1 / NamePlate_1) * 3600;	// total target withdrawal to meet demand based on standard wdl per MW
 	avgDaily_eff_dTemp_1	  = dTemp_1 / optDeltaT_1;							// average daily effluent temperature rise divided by optDeltaT_1 (positive is larger than optDeltaT)
@@ -1485,7 +1545,7 @@ float year					= 0.0;		// RJS 122212
 
 //	if ((totalGJ_heatToEng < 0.0) || (totalGJ_heatToEvap < 0.0) || (energyDemand_1 < 0.0) || (totalHours_run_1 < 0.0) || (Q_outgoing_WTemp_1 < 0.0)) {
 //	if ((NamePlate_1 > 59.9) && (NamePlate_1 < 60.1)) {
-	if (itemID == 33 || itemID == 32) {
+/*	if (itemID == 33 || itemID == 32) {
 	printf("***** NP = %f, totalDaily_demand = %f\n", NamePlate_1, totalDaily_demand_1);
     printf("---- PrePP: itemID = %d, y = %d, m = %d, d = %d, Q_WTemp = %f, Q_incoming = %f, flux_QxT = %f\n", itemID, MFDateGetCurrentYear(), MFDateGetCurrentMonth(), MFDateGetCurrentDay(), Q_WTemp, Q, flux_QxT);
     printf("----PostPP: Q_outgoing_WTemp_1 = %f, Q_outgoing_1 = %f, flux_QxT_new = %f, totalDaily_evap_1(m3s) = %f\n", Q_outgoing_WTemp_1, Q_outgoing_1, flux_QxT_new, totalDaily_evap_1 / 86400);
@@ -1503,7 +1563,7 @@ float year					= 0.0;		// RJS 122212
 	printf("LH_fract_1 = %f, opt_QO_1 = %f\n", LH_fract, opt_QO_1);
 	printf("output_1 = %f, pot_WTemp_1 = %f\n", output_1, pot_WTemp_1);
 	}
-
+*/
 
 
 
