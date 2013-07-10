@@ -382,7 +382,7 @@ static void _MDReservoir (int itemID) {
 		return;
 	}
 
-    if (_MDInDisch_t_1_ID == MFUnset) {
+    if (_MDOutDisch_t_1_ID == MFUnset) {
     //	beta = resCapacity /(meanDischarge * 3600 * 24 * 365/1e9);
         dt = MFModelGet_dt ();
         prevResStorage = MFVarGetFloat(_MDOutResStorageID, itemID, 0.0);
