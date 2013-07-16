@@ -112,6 +112,8 @@ static void _MDNitrogenInputsCalc (int itemID) {
 	float loadAdjust = 0.0;			// RJS 112211
 	float Total_point = 0.0;
 
+// test
+
 	if (_MDInRiverOrderID != MFUnset) riverOrder = MFVarGetFloat (_MDInRiverOrderID, itemID, 0.0);	// RJS 090508
 
 //	if (_MDInLandUseID != MFUnset)	luSub = MFVarGetFloat (_MDInLandUseID, itemID, 0.0);
