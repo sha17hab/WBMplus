@@ -11,6 +11,8 @@
 /obj/MDBgcRiverGPP.o
 /obj/MDBgcRiverLight.o
 /obj/MDCParams.o
+/obj/MDDIN.o
+/obj/MDDO2.o
 /obj/MDDischLevel1.o
 /obj/MDDischLevel2.o
 /obj/MDDischLevel3.o
@@ -20,6 +22,7 @@
 /obj/MDDischLevel3MuskingumCoeff.o
 /obj/MDDischMean.o
 /obj/MDDischarge.o
+/obj/MDEnergyDemand.o
 /obj/MDEvapotransp.o
 /obj/MDGrossRad.o
 /obj/MDIrrGrossDemand.o
@@ -33,6 +36,7 @@
 /obj/MDIrrigatedArea.o
 /obj/MDLSAreaIndex.o
 /obj/MDLandCover.o
+/obj/MDNitrogenInputs.o
 /obj/MDPermafrost.o
 /obj/MDPotETlib.o
 /obj/MDPrecipitation.o
@@ -65,13 +69,17 @@
 /obj/MDSmallReservoirs.o
 /obj/MDSoilAvailWaterCap.o
 /obj/MDSolarRad.o
+/obj/MDStormRunoff.o
 /obj/MDSurfRunoff.o
+/obj/MDSurfRunoffPool.o
 /obj/MDThermalInputs.o
+/obj/MDThermalInputs2.o
+/obj/MDThermalInputs3.o
 /obj/MDWTempGrdWater.o
-obj/MDThermalPowerPlant.o
 /obj/MDWTempRiver.o
 /obj/MDWTempRiverRoute.o
 /obj/MDWTempSurfRunoff.o
+/obj/MDWTempSurfRunoffPool.o
 /obj/MDWaterBalance.o
 /obj/MDWetDays.o
 /obj/MDWetlandArea.o
