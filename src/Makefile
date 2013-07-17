@@ -24,6 +24,8 @@ OBJS = $(OBJ)/WBMMain.o\
        $(OBJ)/MDBgcFecal.o\
        $(OBJ)/MDBgcRiverLight.o\
        $(OBJ)/MDBgcRiverGPP.o\
+       $(OBJ)/MDDIN.o\
+       $(OBJ)/MDNitrogenInputs.o\
        $(OBJ)/MDCParams.o\
        $(OBJ)/MDDischarge.o\
        $(OBJ)/MDDischLevel1.o\
