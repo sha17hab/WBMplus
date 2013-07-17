@@ -25,6 +25,7 @@ OBJS = $(OBJ)/WBMMain.o\
        $(OBJ)/MDBgcRiverLight.o\
        $(OBJ)/MDBgcRiverGPP.o\
        $(OBJ)/MDDIN.o\
+       $(OBJ)/MDDO2.o\
        $(OBJ)/MDNitrogenInputs.o\
        $(OBJ)/MDCParams.o\
        $(OBJ)/MDDischarge.o\
@@ -36,6 +37,7 @@ OBJS = $(OBJ)/WBMMain.o\
        $(OBJ)/MDDischLevel3Muskingum.o\
        $(OBJ)/MDDischLevel3MuskingumCoeff.o\
        $(OBJ)/MDDischMean.o\
+       $(OBJ)/MDEnergyDemand.o\
        $(OBJ)/MDEvapotransp.o\
        $(OBJ)/MDGrossRad.o\
        $(OBJ)/MDLandCover.o\
@@ -82,6 +84,8 @@ OBJS = $(OBJ)/WBMMain.o\
        $(OBJ)/MDSoilAvailWaterCap.o\
        $(OBJ)/MDSMoistChg.o\
        $(OBJ)/MDSurfRunoff.o\
+       $(OBJ)/MDSurfRunoffPool.o\
+       $(OBJ)/MDStormRunoff.o\
        $(OBJ)/MDWaterBalance.o\
        $(OBJ)/MDWetDays.o\
        $(OBJ)/MDWetlands.o\
@@ -91,7 +95,10 @@ OBJS = $(OBJ)/WBMMain.o\
        $(OBJ)/MDWTempRiverRoute.o\
        $(OBJ)/MDWTempGrdWater.o\
        $(OBJ)/MDWTempSurfRunoff.o\
+       $(OBJ)/MDWTempSurfRunoffPool.o\
        $(OBJ)/MDThermalInputs.o\
+       $(OBJ)/MDThermalInputs2.o\
+       $(OBJ)/MDThermalInputs3.o\
        $(OBJ)/MDSedimentFlux.o\
 	   $(OBJ)/MDBQARTpreprocess.o\
 	   $(OBJ)/hydroran2.o\

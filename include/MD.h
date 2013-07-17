@@ -161,6 +161,8 @@ extern "C" {
 
 #define MDVarImpFracSpatial					 "ImpFracSpatial"		//RJS 082812
 
+#define MDVarIceCover			"IceCover"
+	
 #define MDVarIrrAreaFraction                 "IrrigatedAreaFraction"
 
 #define MDVarIrrAreaFractionSeason1          "IrrigatedAreaFractionSeason1"
@@ -482,6 +484,8 @@ extern "C" {
 #define MDVarTransferEffSep					 "TransferEffSep"	//RJS 061511
 
 #define MDVarThermalWdl						 "ThermalWdl"		//RJS 081711
+
+#define MDVarTotalSurfRunoff					 "TotalSurfRunoff"	// RJS 082812
 
 #define MDVarTimeSteps			"TimeSteps"
 #define MDVarNewTimeSteps		"NewTimeSteps"

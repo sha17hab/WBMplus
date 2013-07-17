@@ -14,7 +14,11 @@
         <in>MDAccBalance.c</in>
         <in>MDAccumulate.c</in>
         <in>MDAvgNSteps.c</in>
+        <in>MDBQARTinputs.c</in>
+        <in>MDBQARTpreprocess.c</in>
+        <in>MDBankfullQcalc.c</in>
         <in>MDBaseFlow.c</in>
+        <in>MDBedloadFlux.c</in>
         <in>MDBgc.c</in>
         <in>MDBgcDIN.c</in>
         <in>MDBgcDINPlusBiomass.c</in>
@@ -34,6 +38,7 @@
         <in>MDDischLevel3MuskingumCoeff.c</in>
         <in>MDDischMean.c</in>
         <in>MDDischarge.c</in>
+        <in>MDDischarge_w_overbank.c</in>
         <in>MDEnergyDemand.c</in>
         <in>MDEvapotransp.c</in>
         <in>MDGrossRad.c</in>
@@ -79,6 +84,7 @@
         <in>MDRunoffVolume.c</in>
         <in>MDSMoistChg.c</in>
         <in>MDSPackChg.c</in>
+        <in>MDSedimentFlux.c</in>
         <in>MDSmallReservoirCap.c</in>
         <in>MDSmallReservoirs.c</in>
         <in>MDSoilAvailWaterCap.c</in>
@@ -100,6 +106,8 @@
         <in>MDWetlands.c</in>
         <in>MDWind.c</in>
         <in>WBMMain.c</in>
+        <in>hydroalloc_mem.h</in>
+        <in>hydroran2.c</in>
       </df>
     </df>
     <logicalFolder name="ExternalFiles"
