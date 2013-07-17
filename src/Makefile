@@ -92,14 +92,12 @@ OBJS = $(OBJ)/WBMMain.o\
        $(OBJ)/MDWTempGrdWater.o\
        $(OBJ)/MDWTempSurfRunoff.o\
        $(OBJ)/MDThermalInputs.o\
-       $(OBJ)/MDWTempSurfRunoffPool.o\
-       $(OBJ)/MDSurfRunoffPool.o\
-       $(OBJ)/MDThermalInputs2.o\
-       $(OBJ)/MDEnergyDemand.o\
-       $(OBJ)/MDStormRunoff.o\
-       $(OBJ)/MDDO2.o\
-       $(OBJ)/MDThermalInputs3.o
-       
+       $(OBJ)/MDSedimentFlux.o\
+	   $(OBJ)/MDBQARTpreprocess.o\
+	   $(OBJ)/hydroran2.o\
+	   $(OBJ)/MDBedloadFlux.o\
+	   $(OBJ)/MDBankfullQcalc.o\
+	   $(OBJ)/MDDischarge_w_overbank.o
 
 all: ${TARGET}
 

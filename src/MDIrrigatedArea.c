@@ -59,27 +59,25 @@ int MDIrrigatedAreaDef (){
 	int optionID;
 	const char *optStr;
 	if (((optStr = MFOptionGet (MDOptIrrigatedAreaMap))  == (char *) NULL) || ((optionID = CMoptLookup (mapOptions, optStr, true)) == CMfailed)) {
-				CMmsgPrint(CMmsgUsrError,"Typ of Irr Area not specifed! Options = 'FAO' or 'IWMI'\n");
-				return CMfailed;
-			}
-	MFDefEntering ("Irrigated Area");
+		CMmsgPrint(CMmsgUsrError,"Typ of Irr Area not specifed! Options = 'FAO' or 'IWMI'\n");
+		return CMfailed;
+	}
 	if (_MDIrrigatedAreaFracID != MFUnset) return (_MDIrrigatedAreaFracID);
 
-	if (optionID == 0) 
-	{
-	if (((_MDIrrigatedAreaFracID           = MFVarGetID (MDVarIrrAreaFraction,        "-",    MFInput,  MFState, MFBoundary)) == CMfailed))return CMfailed;
-		return _MDIrrigatedAreaFracID;
-	}
-	if (((_MDIrrigatedAreaFracID           = MFVarGetID (MDVarIrrAreaFraction,        "-",    MFOutput,  MFState, MFBoundary)) == CMfailed))return CMfailed;
-	if(((_MDInIrrAreaFracSeason1ID         = MFVarGetID (MDVarIrrAreaFractionSeason1,        "-",    MFInput,  MFState, MFBoundary)) == CMfailed)) return CMfailed;
-	if(((_MDInIrrAreaFracSeason2ID         = MFVarGetID (MDVarIrrAreaFractionSeason2,        "-",    MFInput,  MFState, MFBoundary)) == CMfailed)) return CMfailed;
-    if (((_MDGrowingSeason1ID              = MFVarGetID (MDVarIrrGrowingSeason1Start, "DoY",  MFInput,  MFState, MFBoundary)) == CMfailed))return CMfailed;
-    if (((_MDGrowingSeason2ID              = MFVarGetID (MDVarIrrGrowingSeason2Start, "DoY",  MFInput,  MFState, MFBoundary)) == CMfailed))return CMfailed;
+	MFDefEntering ("Irrigated Area");
 
-	
-	
-	if (MFModelAddFunction (_MDIrrigatedAreaIWMI) == CMfailed) return (CMfailed);
-	MFDefLeaving("IrrigatedAreas");
+	if (optionID == 0) {
+		if (((_MDIrrigatedAreaFracID        = MFVarGetID (MDVarIrrAreaFraction,        "-",    MFInput,  MFState, MFBoundary)) == CMfailed)) return CMfailed;
+		/*return _MDIrrigatedAreaFracID;*/
+	}
+    else if (((_MDIrrigatedAreaFracID           = MFVarGetID (MDVarIrrAreaFraction,        "-",    MFOutput, MFState, MFBoundary)) == CMfailed) ||
+	    ((_MDInIrrAreaFracSeason1ID        = MFVarGetID (MDVarIrrAreaFractionSeason1, "-",    MFInput,  MFState, MFBoundary)) == CMfailed) ||
+	    ((_MDInIrrAreaFracSeason2ID        = MFVarGetID (MDVarIrrAreaFractionSeason2, "-",    MFInput,  MFState, MFBoundary)) == CMfailed) ||
+       ((_MDGrowingSeason1ID              = MFVarGetID (MDVarIrrGrowingSeason1Start, "DoY",  MFInput,  MFState, MFBoundary)) == CMfailed) ||
+       ((_MDGrowingSeason2ID              = MFVarGetID (MDVarIrrGrowingSeason2Start, "DoY",  MFInput,  MFState, MFBoundary)) == CMfailed) ||
+	    (MFModelAddFunction (_MDIrrigatedAreaIWMI) == CMfailed)) return (CMfailed);
+
+	MFDefLeaving("Irrigated Area");
 	return (_MDIrrigatedAreaFracID);
 	
 }
