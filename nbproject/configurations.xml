@@ -23,6 +23,7 @@
         <in>MDBgcRiverGPP.c</in>
         <in>MDBgcRiverLight.c</in>
         <in>MDCParams.c</in>
+        <in>MDDIN.c</in>
         <in>MDDO2.c</in>
         <in>MDDischLevel1.c</in>
         <in>MDDischLevel2.c</in>
@@ -47,6 +48,7 @@
         <in>MDIrrigatedArea.c</in>
         <in>MDLSAreaIndex.c</in>
         <in>MDLandCover.c</in>
+        <in>MDNitrogenInputs.c</in>
         <in>MDPermafrost.c</in>
         <in>MDPotETHamon.c</in>
         <in>MDPotETlib.c</in>
