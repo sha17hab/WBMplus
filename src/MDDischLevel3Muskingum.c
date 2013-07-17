@@ -69,8 +69,8 @@ static void _MDDischLevel3Muskingum (int itemID) {
 //	Qout_t0 = outDischPrevious;
 	//}
 	
-	if (itemID == 33 || itemID == 32) printf("**Discharge Musk** itemID=%d, day = %d, outDisch = %f, inDischCurrent = %f, inDischPrevious = %f\n", itemID, MFDateGetCurrentDay(), outDisch, inDischCurrent, inDischPrevious);
-	if (itemID == 33 || itemID == 32) printf("C0 = %f, C1 = %f, C2 = %f, storage = %f, storChg = %f\n", C0, C1, C2, storage, storChg);
+//	if (itemID == 33 || itemID == 32) printf("**Discharge Musk** itemID=%d, day = %d, outDisch = %f, inDischCurrent = %f, inDischPrevious = %f\n", itemID, MFDateGetCurrentDay(), outDisch, inDischCurrent, inDischPrevious);
+//	if (itemID == 33 || itemID == 32) printf("C0 = %f, C1 = %f, C2 = %f, storage = %f, storChg = %f\n", C0, C1, C2, storage, storChg);
 
 	MFVarSetFloat (_MDOutDischAux0ID,    itemID, inDischCurrent);
 //	MFVarSetFloat (_MDOutDischAux0ID,    itemID, outDisch);		// 030113 RJS

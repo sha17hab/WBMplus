@@ -23,6 +23,7 @@ extern "C" {
 #define MDCalculateStr "calculate"
 
 // Options
+#define MDOptDINInputs						 "DINInputs"		// RJS 042513
 #define MDOptDO2							 "DO2"				// RJS 111612
 #define MDOptDischarge                       "Discharge"
 #define MDOptIrrigation                      "Irrigation"
@@ -267,6 +268,65 @@ extern "C" {
 #define MDVarRiverbedVelocityMean            "RiverbedVelocityMean"
 #define MDVarRiverDepth                      "RiverDepth"
 
+// DIN Variables //
+#define MDVarRiverOrder						 "RiverOrder"				// RJS 042413
+#define MDVarFluxDIN						 "FluxDIN"
+#define MDVarStoreWaterDIN					 "StoreWaterDIN"
+#define MDVarTnQ10							 "TnQ10"
+#define MDVarPostConcDIN					 "PostConcDIN"
+#define MDVarPreConcDIN						 "PreConcDIN"
+#define MDVarTotalMassRemovedTSDIN			 "TotalMassRemovedTSDIN"
+#define MDVarTotalMassRemovedDZDIN			 "TotalMassRemovedDZDIN"
+#define MDVarTotalMassRemovedHZDIN			 "TotalMassRemovedHZDIN"
+#define MDVarTotalMassRemovedMCDIN			 "TotalMassRemovedMCDIN"
+#define MDVarTotalMassRemovedDIN			 "TotalMassRemovedDIN"
+#define MDVarTimeOfStorageDZ				 "TimeOfStorageDZ"
+#define MDVarTimeOfStorageHZ				 "TimeOfStorageHZ"
+#define MDVarTimeOfStorageMC				 "TimeOfStorageMC"
+#define MDVarTransferDZ						 "TransferDZ"
+#define MDVarTransferHZ						 "TransferHZ"
+#define MDVarPreFluxDIN						 "PreFluxDIN"
+#define MDVarWaterDZ						 "WaterDZ"
+#define MDVarWaterHZ						 "WaterHZ"
+#define MDVarUptakeVf						 "UptakeVf"
+#define MDVarFluxMixingDIN					 "FluxMixingDIN"
+#define MDVarStoreWaterMixingDIN			 "StoreWaterMixingDIN"
+#define MDVarTotalMassPreDIN				 "TotalMassPreDIN"
+#define MDVarConcMixing						 "ConcMixing"
+#define MDVarMassBalanceDIN					 "MassBalanceDIN"
+#define MDVarMassBalanceMixingDIN			 "MassBalanceMixingDIN"
+#define MDVarRemovalDZ						 "RemovalDZ"
+#define MDVarRemovalHZ						 "RemovalHZ"
+#define MDVarRemovalMC						 "RemovalMC"
+#define MDVarRemovalTotal					 "RemovalTotal"
+#define MDVarAsDZ							 "AsDZ"
+#define MDVarAsHZ							 "AsHZ"
+#define MDVarAa								 "Aa"
+#define MDVarVelocity						 "Velocity"
+#define MDVarDINVf							 "DINVf"
+#define MDVarDINKt							 "DINKt"
+#define MDVarDeltaStoreWaterDIN				 "DeltaStoreWaterDIN"
+#define MDVarDeltaStoreWaterMixingDIN		 "DeltaStoreWaterMixingDIN"
+#define MDVarFlowPathRemovalDIN				 "FlowPathRemovalDIN"
+#define MDVarFlowPathRemovalMixingDIN		 "FlowPathRemovalMixingDIN"
+#define MDVfAdjust							 "VfAdjust"
+
+#define MDVarLandUseSpatial					 "LandUseSpatial"
+#define MDVarLawnFraction					 "LawnFraction"
+#define MDVarLoadAdjust						 "LoadAdjust"
+#define MDVarLocalLoadDIN					 "LocalLoadDIN"
+#define MDVarLocalLoadDINnew				 "LocalLoadDINnew"
+#define MDVarGroundWaterMassRel				 "GroundWaterMassRel"
+#define MDVarRunoffPoolMassRel				 "RunoffPoolMassRel"
+#define MDVarDINLoadConc					 "DINLoadConc"
+
+#define MDVarLocalLoadSubDIN				 "LocalLoadSubDIN"
+#define MDVarLocalLoadAgDIN					 "LocalLoadAgDIN"
+#define MDVarDINSubLoadConc					 "DINSubLoadConc"
+#define MDVarDINAgLoadConc					 "DINAgLoadConc"
+#define MDVarLandUseSpatialSub				 "LandUseSpatialSub"
+#define MDVarLandUseSpatialAg				 "LandUseSpatialAg"
+
 // DO2 Variables //
 #define MDVarRiverMassDO2					 "RiverMassDO2"				// RJS 111612
 #define MDVarRiverConcDO2					 "RiverConcDO2"				// RJS 111612
@@ -280,6 +340,7 @@ extern "C" {
 #define MDVarRiverStorage                    "RiverStorage"
 #define MDVarRiverStorageChg                 "RiverStorageChange"
 #define MDVarRiverWidth                      "RiverbedWidth"
+
 
 #define MDVarRiverThreshT					 "RiverThreshT"				// RJS 062012
 
@@ -501,6 +562,14 @@ extern "C" {
 #define MDParSnowMeltThreshold               "SnowMeltThreshold"	
 #define	MDParFallThreshold				     "SnowFallThreshold"
 
+#define MDParAlphaSTS						 "AlphaSTS"
+#define MDParAlphaHTS						 "AlphaHTS"
+#define MDParASTSA							 "ASTSA"
+#define MDParAHTSA							 "AHTSA"
+#define MDParUptakeKtMC						 "UptakeKtMC"
+#define MDParUptakeKtSTS					 "UptakeKtSTS"
+#define MDParUptakeKtHTS					 "UptakeKtHTS"
+
 #define MDConst_m3PerSecTOm3PerDay    86400.0
 #define MDConst_m3PerSecTOmmKm2PerDay 86400000.0 // TODO Not Used!
 #define MDConst_mmKm2PerDayTOm3PerSec (1.0 / 86400000.0) // TODO Not Used!
@@ -559,6 +628,8 @@ int MDCParamCRDef();
 int MDCParamGLMaxDef();
 int MDCParamLPMaxDef();
 int MDCParamZ0gDef();
+int MDDINDef();					// RJS 042513
+int MDNitrgoenInputsDef();		// RJS 042513
 int MDDischargeDef();
 int MDDischLevel1Def();
 int MDDischLevel2Def();
