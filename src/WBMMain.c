@@ -17,7 +17,7 @@ int main (int argc,char *argv []) {
 	int argNum;
 	int  optID = MDbalance;
 	const char *optStr, *optName = MDOptModel;
-	const char *options [] = { "pet", "surplus", "infiltration", "runoff", "discharge",  "watertemp", "thermal", "balance", "geometry", "bgc", "bgc_DIN","bgc_DINPLUSBIOMASS", "bgc_DOC", "fecal", "sedimentflux","bedloadflux", "BQARTinputs" , "BQARTpreprocess","bankfullQcalc","riverbedshape", (char *) NULL };
+	const char *options [] = { "pet", "surplus", "infiltration", "runoff", "discharge",  "watertemp", "thermal", "thermal2", "balance", "geometry", "bgc", "bgc_DIN","bgc_DINPLUSBIOMASS", "bgc_DOC", "fecal", "DO2", "DIN", "sedimentflux","bedloadflux", "BQARTinputs" , "BQARTpreprocess","bankfullQcalc","riverbedshape", (char *) NULL };
 
 	argNum = MFOptionParse (argc,argv);
 
@@ -32,7 +32,7 @@ int main (int argc,char *argv []) {
 		case MDbalance:      return (MFModelRun (argc,argv,argNum,MDWaterBalanceDef));
 		case MDwatertemp:    return (MFModelRun (argc,argv,argNum,MDWTempRiverRouteDef));
 		case MDthermal:		 return (MFModelRun (argc,argv,argNum,MDThermalInputsDef));		// RJS 013112
-		case MDthermal2:	 return (MFModelRun (argc,argv,argNum,MDThermalInputs2Def));	// RJS 062012
+		case MDthermal2:	   return (MFModelRun (argc,argv,argNum,MDThermalInputs2Def));	// RJS 062012
 		case MDthermal3:     return (MFModelRun (argc,argv,argNum,MDThermalInputs3Def));	// RJS 112712
 		case MDgeometry:     return (MFModelRun (argc,argv,argNum,MDRiverWidthDef));
 		case MDbgc:          return (MFModelRun (argc,argv,argNum,MDBgcRoutingDef));
