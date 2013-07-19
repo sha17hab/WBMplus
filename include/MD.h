@@ -135,6 +135,11 @@ extern "C" {
 #define MDVarEfficiency1					 "Efficiency1"			// RJS 062012
 #define MDVarEnergyDemand					 "EnergyDemand"			// RJS 062012
 
+#define MDVarDischargeMin                    "DischargeMin"
+#define MDVarDischargeMax                    "DischargeMax"
+#define MDVarDischarge_t_1                   "Dischage_t_1"
+#define MDVarDischarge_t_2                   "Dischage_t_2"
+
 #define MDVarEvapotranspiration              "Evapotranspiration"
 #define MDVarFuelType1						 "FuelType1"			//RJS 013012
 #define MDVarFuelType2						 "FuelType2"			//RJS 013012
@@ -273,7 +278,9 @@ extern "C" {
 #define MDVarReservoirRelease                "ReservoirRelease"
 #define MDVarReservoirStorage                "ReservoirStorage" 
 #define MDVarReservoirStorageChange          "ReservoirStorageChange"
-#define MDVarRelief                "ReliefMax"
+#define MDVarRelief                          "ReliefMax"
+
+#define MDVarReservoirRelease_t_1            "ReservoirReslease_t_1"
 
 #define MDVarRelHumidity                     "RelativeHumidity"
 #define MDVarRelSoilMoisture                 "RelativeSoilMoisture"	
