@@ -340,7 +340,7 @@ static float ANNOUTPUT (float I1[3][1], float I2[2][1], float I3) {
 
 
 
-static void _MDReservoir (int itemID) {
+static void _MDReservoirNeuralNet (int itemID) {
 
 // Input
 	float discharge;         // Current discharge [m3/s]
@@ -377,78 +377,85 @@ static void _MDReservoir (int itemID) {
 		MFVarSetFloat (_MDOutResStorageID,    itemID, 0.0); 
 		MFVarSetFloat (_MDOutResStorageChgID, itemID, 0.0); 
 		MFVarSetFloat (_MDOutResReleaseID,    itemID, discharge);
-
-//		if (itemID == 25014) printf("@@@ m= %d, d= %d, balance = %f, resCapacity = %f, Q = %f, meanQ = %f, resRelease = %f, resStorage = %f, prevResStorage = %f\n", MFDateGetCurrentMonth(), MFDateGetCurrentDay(), balance, resCapacity, discharge, meanDischarge, resRelease, resStorage*1000000000, prevResStorage*1000000000);
 		return;
 	}
 
-    if (_MDOutDisch_t_1_ID == MFUnset) {
-    //	beta = resCapacity /(meanDischarge * 3600 * 24 * 365/1e9);
-        dt = MFModelGet_dt ();
-        prevResStorage = MFVarGetFloat(_MDOutResStorageID, itemID, 0.0);
+	discharge_min = MFVarGetFloat(_MDInDischMinID, itemID, 0.0);
+	discharge_max = MFVarGetFloat(_MDInDischMaxID, itemID, 0.0);      
+	discharge_t_1 = discharge;
+	discharge_t_2 = MFVarGetFloat(_MDOutDisch_t_1_ID, itemID, 0.0);
+	discharge_t_3 = MFVarGetFloat(_MDOutDisch_t_2_ID, itemID, 0.0);
 
-        resRelease = discharge > meanDischarge ?
-                        wetSeasonPct * discharge  :
-                        drySeasonPct * discharge + (meanDischarge - discharge);
-
-    //			- 0.19 * beta + 0.88  * discharge  :
-    //		           0.47 * beta + 1.12 * discharge;
-
-        resStorage = prevResStorage + (discharge - resRelease) * 86400.0 / 1e9;
-
-        if (resStorage > resCapacity) {
-            resRelease = discharge * dt / 1e9 + prevResStorage - resCapacity;
-            resRelease = resRelease * 1e9 / dt;
-            resStorage = resCapacity;
-        }
-
-        else if (resStorage < 0.0) {
-            resRelease = prevResStorage + discharge  * dt / 1e9;
-            resRelease = resRelease * 1e9 / dt;
-            resStorage=0;
-        }
-                
-        resStorageChg = resStorage - prevResStorage;
-
-        balance = discharge - resRelease - (resStorageChg / 86400 * 1e9);	// water balance
-
-        MFVarSetFloat (_MDOutResStorageID,    itemID, resStorage);
-        MFVarSetFloat (_MDOutResStorageChgID, itemID, resStorageChg);
-        MFVarSetFloat (_MDOutResReleaseID,    itemID, resRelease);
-
-    //	if ((itemID == 25014) && (year < 1980)) printf("y = %f, m= %d, d= %d, dt = %f, balance = %f, resCapacity = %f, Q = %f, meanQ = %f, resRelease = %f, resStorage = %f, prevResStorage = %f\n", year, MFDateGetCurrentMonth(), MFDateGetCurrentDay(), dt, balance, resCapacity, discharge, meanDischarge, resRelease, resStorage*1000000000, prevResStorage*1000000000);
-        
-    } else {
-        discharge_min = MFVarGetFloat(_MDInDischMinID, itemID, 0.0);       
-        discharge_max = MFVarGetFloat(_MDInDischMaxID, itemID, 0.0);       
-         
-        discharge_t_1 = discharge;
-        discharge_t_2 = MFVarGetFloat(_MDOutDisch_t_1_ID, itemID, 0.0);
-        discharge_t_3 = MFVarGetFloat(_MDOutDisch_t_2_ID, itemID, 0.0);
-
-        res_release_t_1 = MFVarGetFloat(_MDOutResReleaseID, itemID, 0.0);
-        res_release_t_2 = MFVarGetFloat(_MDOutResRelease_t_1_ID, itemID, 0.0);
+	res_release_t_1 = MFVarGetFloat(_MDOutResReleaseID, itemID, 0.0);
+	res_release_t_2 = MFVarGetFloat(_MDOutResRelease_t_1_ID, itemID, 0.0);
 
 // put code here...
 
-
-
-
-
-
-
-
-
-        resRelease = ...
 //
 
 
-        MFVarSetFloat(_MDOutDisch_t_1_ID, itemID, discharge_t_1);
-        MFVarSetFloat(_MDOutDisch_t_2_ID, itemID, discharge_t_2);
-        MFVarSetFloat(_MDOutResReleaseID, itemID, resRelease);
-        MFVarSetFloat(_MDOutResRelease_t_1_ID, itemID, res_release_t_1);
-    }
+	MFVarSetFloat(_MDOutDisch_t_1_ID, itemID, discharge_t_1);
+	MFVarSetFloat(_MDOutDisch_t_2_ID, itemID, discharge_t_2);
+	MFVarSetFloat(_MDOutResReleaseID, itemID, resRelease);
+	MFVarSetFloat(_MDOutResRelease_t_1_ID, itemID, res_release_t_1);
+}
 
+static void _MDReservoirDW (int itemID) {
+
+// Input
+   float discharge;         // Current discharge [m3/s]
+   float meanDischarge;     // Long-term mean annual discharge [m3/s]
+   float resCapacity;       // Reservoir capacity [km3]
+
+// Output
+   float resStorage;     // Reservoir storage [km3]
+   float resStorageChg;  // Reservoir storage change [km3/dt]
+   float resRelease;     // Reservoir release [m3/s] 
+
+// local
+   float prevResStorage; // Reservoir storage from the previous time step [km3]
+   float dt;             // Time step length [s]
+   float balance;      // water balance [m3/s]
+
+// Parameters
+   float drySeasonPct = 0.60; // RJS 071511
+   float wetSeasonPct = 0.16; // RJS 071511
+   float year = 0;            // RJS 082311
+
+   discharge     = MFVarGetFloat (_MDInDischargeID,    itemID, 0.0);
+   meanDischarge = MFVarGetFloat (_MDInDischMeanID,    itemID, discharge);
+   year       = MFDateGetCurrentYear();
+
+   if ((resCapacity = MFVarGetFloat (_MDInResCapacityID, itemID, 0.0)) <= 0.0) {
+		MFVarSetFloat (_MDOutResStorageID,    itemID, 0.0);
+		MFVarSetFloat (_MDOutResStorageChgID, itemID, 0.0);
+		MFVarSetFloat (_MDOutResReleaseID,    itemID, discharge);
+		return;
+	}
+	dt = MFModelGet_dt ();
+	prevResStorage = MFVarGetFloat(_MDOutResStorageID, itemID, 0.0);
+
+	resRelease = discharge > meanDischarge ? wetSeasonPct * discharge  : drySeasonPct * discharge + (meanDischarge - discharge);
+
+	resStorage = prevResStorage + (discharge - resRelease) * 86400.0 / 1e9;
+
+	if (resStorage > resCapacity) {
+		resRelease = discharge * dt / 1e9 + prevResStorage - resCapacity;
+		resRelease = resRelease * 1e9 / dt;
+		resStorage = resCapacity;
+	}
+	else if (resStorage < 0.0) {
+		resRelease = prevResStorage + discharge  * dt / 1e9;
+		resRelease = resRelease * 1e9 / dt;
+		resStorage=0;
+	}
+
+	resStorageChg = resStorage - prevResStorage;
+
+	balance = discharge - resRelease - (resStorageChg / 86400 * 1e9); // water balance
+
+	MFVarSetFloat (_MDOutResStorageID,    itemID, resStorage);
+	MFVarSetFloat (_MDOutResStorageChgID, itemID, resStorageChg);
 }
 
 enum { MDnone, MDcalculate, MDneuralnet };
@@ -471,7 +478,7 @@ int MDReservoirDef () {
 			    ((_MDOutResStorageID    = MFVarGetID (MDVarReservoirStorage,       "km3",  MFOutput, MFState, MFInitial))  == CMfailed) ||
 			    ((_MDOutResStorageChgID = MFVarGetID (MDVarReservoirStorageChange, "km3",  MFOutput, MFState, MFBoundary)) == CMfailed) ||		//RJS, changed MFBoundary o MFIniial
 			    ((_MDOutResReleaseID    = MFVarGetID (MDVarReservoirRelease,       "m3/s", MFOutput, MFFlux,  MFBoundary)) == CMfailed) ||
-			    (MFModelAddFunction (_MDReservoir) == CMfailed)) return (CMfailed);
+			    (MFModelAddFunction (_MDReservoirDW) == CMfailed)) return (CMfailed);
 			break;
         case MDneuralnet:
 			if (((_MDInDischargeID      = MDDischLevel2Def ()) == CMfailed) ||
@@ -484,7 +491,7 @@ int MDReservoirDef () {
 			    ((_MDOutResStorageChgID = MFVarGetID (MDVarReservoirStorageChange, "m3",  MFOutput, MFState, MFBoundary)) == CMfailed) ||		//RJS, changed MFBoundary o MFIniial
 			    ((_MDOutResReleaseID    = MFVarGetID (MDVarReservoirRelease,       "m3/s", MFOutput, MFFlux,  MFInitial)) == CMfailed) ||
 			    ((_MDOutResRelease_t_1_ID    = MFVarGetID (MDVarReservoirRelease_t_1, "m3/s", MFOutput, MFFlux,  MFInitial)) == CMfailed) ||
-			    (MFModelAddFunction (_MDReservoir) == CMfailed)) return (CMfailed);
+			    (MFModelAddFunction (_MDReservoirNeuralNet) == CMfailed)) return (CMfailed);
 			break;
 		default: MFOptionMessage (optName, optStr, options); return (CMfailed);
 	}
